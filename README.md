@@ -49,52 +49,35 @@ Come è possibile leggere nella pagine dell'Istituto italiano:
 
 Scopo principale di questo progetto  è quello di automatizzare l`acquisizione "in quasi tempo reale" di un indice di qualità dell'aria acquisendo i dati ambientali pubblicati tramite API dall'ISPRA che li acquisisce della diverse Agenzie Regionali di Protezione e Prevenzione Ambientale sparse su tutto il territorio nazionale, la loro elaborazione tramite Node-RED e la successiva integrazione in Home Assistant per la successiva visualizzazione.
 
-Tutte le info sono disponibili sul sito dell'Istituto traime il [S.I.N.A.](https://sinacloud.isprambiente.it/portal/apps/experiencebuilder/experience/?draft=true&id=df677d20871d4383b34ce355e24f0598&page=page_38) (**Sistema Unformativo Nazionale Ambientale**) secondo la [mappa](https://dati.arpa.puglia.it/qaria?footer=false%EF%BB%BF) ed i dati sono disponbili per il [download](https://sinacloud.isprambiente.it/portal/apps/experiencebuilder/experience/?draft=true&id=df677d20871d4383b34ce355e24f0598&page=page_74). 
+Tutte le info sono disponibili sul sito dell'Istituto traime il [S.I.N.A.](https://sinacloud.isprambiente.it/portal/apps/experiencebuilder/experience/?draft=true&id=df677d20871d4383b34ce355e24f0598&page=page_38) (**Sistema Unformativo Nazionale Ambientale**) secondo la [mappa](https://dati.arpa.puglia.it/qaria?footer=false%EF%BB%BF) dove i dati sono disponbili per il [download](https://sinacloud.isprambiente.it/portal/apps/experiencebuilder/experience/?draft=true&id=df677d20871d4383b34ce355e24f0598&page=page_74). 
 
 ---
 
 ## Caratteristiche principali
 
-- **API Integration**: Collegamento diretto alle API di ARPA Puglia per il prelievo di dei seguenti parametri ambientali:
+- **API Integration**: Collegamento diretto alle API di ISPRA per il prelievo di dei seguenti parametri ambientali:
      1.  **PM10** (Polveri inalabili. Insieme di sostanze solide e liquide con diametro inferiore a 10 micron. Derivano  da emissioni di autoveicoli, processi industriali, fenomeni naturali)
      1.  **PM2.5** (Polveri respirabili. Insieme di sostanze solide e liquide con diametro inferiore a 2.5 micron. Derivano  da processi industriali, processi di combustione, emissioni di autoveicoli, fenomeni naturali)
      3.  **NO2** (Biossido di azoto. Gas tossico che si forma nelle combustioni ad alta temperatura. Sue principali sorgenti sono i motori a scoppio, gli impianti termici, le centrali termoelettriche)
      4.  **SO2** (Biossido di zolfo. Gas irritante, si forma soprattutto in seguito all`utilizzo di combustibili (carbone, petrolio, gasolio) contenenti impurezze di zolfo)
      5.  **CO** (Monossido di Carbonio. Sostanza gassosa, si forma per combustione incompleta di materiale organico, ad esempio nei motori degli autoveicoli e nei processi industriali)
      6.  **C6H6** (Benzene. Liquido volatile e dall`odore dolciastro. Deriva dalla combustione incompleta del carbone e del petrolio, dai gas esausti dei veicoli a motore, dal fumo di tabacco)
-     7.  **IPA** (Idrocarburi Policiclici Aromatici. Classe di composti organici semi-volatili, con 2 o più da anelli benzenici condensati tra loro, generati dalla combustione incompleta di materiale organico. Il dato fornito si riferisce agli IPA adsorbiti su particelle carboniose con un diametro aerodinamico tra 0.01 e 1 micron)
-     8.  **H2S** (Idrogeno solforato. Gas incolore dal caratteristico odore di uova marce, caratterizzato da una soglia olfattiva bassa.  E` generato nella produzione di carbon coke, nella lavorazione del petrolio,  di fertilizzanti, dei rifiuti e di altri procedimenti industriali)
-     9.  **O3** (Ozono. Sostanza non emessa direttamente in atmosfera, si forma per reazione tra altri inquinanti, principalmente NO2 e idrocarburi, in presenza di radiazione solare)
-     10.  **BLACK CARB** (Black Carbon. Prodotto della combustione incompleta di combustibili fossili e biomassa; può essere emesso da sorgenti naturali ed antropiche sotto forma di fuliggine)
-     11. **Qualità dell`aria**
-
-**Disclaimer**: Non tutte le centraline espongono tutti i dati, pertanto, ho deciso di pubblicare due flussi di node-red da poter poi integrare con i dati eventualmente recuperati direttamente dal sito ARPA di accesso alle loro API: 
-
-[API_Regione_Puglia](https://dati.arpa.puglia.it/openapi/index.html)
-
-- **Workflow Node-RED**: Flusso configurato per interrogare giornalmente le API, processare i dati (formattazione, validazione) e inviarli a un broker MQTT.
-- **Comunicazione MQTT**: Trasmissione sicura dei dati a Home Assistant tramite protocollo MQTT, con topic dedicati per ciascun sensore.
-- **Custom Sensor in Home Assistant**: Configurazione di sensori personalizzati in HA per ricevere i dati via MQTT e visualizzarli in dashboard.
-- **Automazione Giornaliera**: Schedulazione degli aggiornamenti per garantire dati sempre aggiornati senza intervento manuale.
-
----
+     7.  **O3** (Ozono. Sostanza non emessa direttamente in atmosfera, si forma per reazione tra altri inquinanti, principalmente NO2 e idrocarburi, in presenza di radiazione solare)
+    
 
 ## Descrizione del Funzionamento
 
 1. **Acquisizione Dati**:  
-   Node-RED effettua chiamate API periodiche ad ARPA Puglia e filtra i dati rilevanti.
+   Node-RED effettua chiamate API ogni ora, filtra i dati e restituisce il singolo valore aggiornato.
 
 2. **Elaborazione**:  
-   I dati vengono convertiti in payload MQTT compatibili (es. JSON strutturato).
+   I dati vengono analizzati e restituiti sian singolarmente che in modo aggregato fornendo il singolo valore di qualità dell'aria. 
 
 3. **Invio a Home Assistant**:  
-   I payload sono pubblicati su un broker MQTT (es. Mosquitto) e ricevuti da HA tramite listener MQTT.
-
-4. **Creazione Sensori**:  
-   Script YAML in HA definiscono sensori che mappano i dati MQTT su entità utilizzabili (es. `sensor.temperatura_arpapuglia`).
+   I payload sono pubblicati in sensori direttamente esposti in HA.
 
 5. **Visualizzazione**:  
-   Integrazione in dashboard per monitoraggio ambientale centralizzato.
+   I dati dati così ottenuti sono graficamente esposti.
 
 ---
 
@@ -103,111 +86,215 @@ Tutte le info sono disponibili sul sito dell'Istituto traime il [S.I.N.A.](https
 ### 1 - Prerequisiti
 
 - Node-RED installato e configurato con nodi:
-  - `node-red-contrib-mqtt`
   - `node-red-contrib-http-request`
-- Broker MQTT (es. Mosquitto) in esecuzione e integrato con Home Assistant.
-- Custom `flex-table-card` scaricabile da HACS installata e configurata (Se volete utilizzare la tabella di visualizzazione come ho fatto io).
+- HACS installata e configurata con la custom `flex-table-card` (Se volete utilizzare la tabella di visualizzazione come ho fatto io).
 
 
 ### 2 - Configurazione dei dati da acquisire
 
-1.Come già anticipato i dati sono acquisiti tramite le API pubbliche messe a disposizione dall`ARPA. Le centraline disponibili (dato aggiornato al 29.1.2025) sono le seguenti:
+1.Come già anticipato i dati sono acquisiti tramite le API pubbliche messe a disposizione dall`ARPA. Le centraline disponibili (dato aggiornato al 9/4/2025) sono le seguenti:
 
-|id_station|             denominazione                                |                       comune    | indirizzo               |rete   |interesse_rete|provincia    |   paese   |paese_esteso  |  Latitude    |Longitude     |    sorgente  |
-| -------- | -------------------------------------------------------- | ------------------------------- | ----------------------- | ----- | ------------ | ----------- | --------- | ------------ | ------------ | ------------ | ------------ |
-|8|Monte S. Angelo - Ciuffreda|Monte Sant Angelo|Suolo Ciuffreda|RRQA|PUBBLICO|Foggia|IT|Italy|15.945254|41.666109|ARPAP
-|10|Manfredonia - Mandorli|Manfredonia|Via dei Mandorli|RRQA|PUBBLICO|Foggia|IT|Italy|15.909638|41.629333|ARPAP
-|14|Molfetta - Verdi|Molfetta|P.zza Verdi|RRQA|PUBBLICO|Bari|IT|Italy|16.605253|41.201101|ARPAP
-|17|Bari - Caldarola|Bari|Via Caldarola|RRQA|PUBBLICO|Bari|IT|Italy|16.888064|41.113542|ARPAP
-|18|Statte - Sorgenti|Statte|Via Delle Sorgenti|RRQA|PUBBLICO|Taranto|IT|Italy|17.203325|40.562499|ARPAP
-|19|Taranto - Archimede|Taranto|Via Archimede|RRQA|PUBBLICO|Taranto|IT|Italy|17.233048|40.494441|ARPAP
-|20|Taranto - Machiavelli|Taranto|Via Machiavelli|RRQA|PUBBLICO|Taranto|IT|Italy|17.225823|40.488608|ARPAP
-|21|Taranto - San Vito|Taranto|presso Colonia Marina|RRQA|PUBBLICO|Taranto|IT|Italy|17.225272|40.423328|ARPAP
-|22|Taranto - Alto Adige|Taranto|Via Alto Adige presso scuola XX Circolo|RRQA|PUBBLICO|Taranto|IT|Italy|17.263602|40.460553|ARPAP
-|23|Mesagne - Via Udine|Mesagne|Via Udine|RRQA|PUBBLICO|Brindisi|IT|Italy|17.807998|40.565995|ARPAP
-|24|Brindisi - Via Taranto|Brindisi|Via Taranto|RRQA|PUBBLICO|Brindisi|IT|Italy|17.947777|40.634166|ARPAP
-|25|San Pancrazio|San Pancrazio Salentino|---|RRQA|PUBBLICO|Brindisi|IT|Italy|17.845999|40.422993|ARPAP
-|26|San Pietro Vernotico|San Pietro Vernotico|---|RRQA|PUBBLICO|Brindisi|IT|Italy|18.005994|40.485998|ARPAP
-|27|Torchiarolo - Don Minzoni|Torchiarolo|P.za Don Minzoni|RRQA|PUBBLICO|Brindisi|IT|Italy|18.053991|40.487999|ARPAP
-|28|Guagnano - Villa Baldassarri|Guagnano|Villa Baldassarri|RRQA|PUBBLICO|Lecce|IT|Italy|17.964477|40.418525|ARPAP
-|29|Lecce - Cerrate|Lecce|S. Maria Cerrate|RRQA|PUBBLICO|Lecce|IT|Italy|18.116386|40.459696|ARPAP
-|31|Arnesano - Riesci|Arnesano|Zona Riesci|RRQA|PUBBLICO|Lecce|IT|Italy|18.095074|40.346270|ARPAP
-|33|Brindisi - Via dei Mille|Brindisi|Via dei Mille|RRQA|PUBBLICO|Brindisi|IT|Italy|17.938152|40.638748|ARPAP
-|35|Brindisi - Casale|Brindisi|Via San Giusto|RRQA|PUBBLICO|Brindisi|IT|Italy|17.942569|40.650083|ARPAP
-|36|Brindisi - SISRI|Brindisi|Via Curie|RRQA|PUBBLICO|Brindisi|IT|Italy|17.975041|40.624738|ARPAP
-|37|Taranto - CISI|Taranto|q.re Paolo VI - presso CISI Puglia|RRQA|PUBBLICO|Taranto|IT|Italy|17.253416|40.520934|ARPAP
-|38|Taranto - Talsano|Taranto|Talsano - presso scuola U.Foscolo|RRQA|PUBBLICO|Taranto|IT|Italy|17.283879|40.411943|ARPAP
-|40|Statte - Wind|Statte|ss.7 presso il ponte radio wind|RRQA|PUBBLICO|Taranto|IT|Italy|17.173611|40.526111|ARPAP
-|41|Grottaglie|Grottaglie|via XXV luglio|RRQA|PUBBLICO|Taranto|IT|Italy|17.423879|40.537776|ARPAP
-|42|Martina Franca|Martina Franca|Via della Stazione|RRQA|PUBBLICO|Taranto|IT|Italy|17.331939|40.700826|ARPAP
-|47|Lecce - Garigliano|Lecce|---|RRQA|PUBBLICO|Lecce|IT|Italy|18.174327|40.364457|ARPAP
-|49|Maglie|Maglie|Via Don. L. Sturzo 4|---|PUBBLICO|Lecce|IT|Italy|18.294098|40.123636|ARPAP
-|50|Galatina - I.T.C.  La Porta |Galatina|Viale degli studenti|RRQA|PUBBLICO|Lecce|IT|Italy|18.174725|40.166947|ARPAP
-|51|Campi Salentina|Campi Salentina|Via Napoli|RRQA|PUBBLICO|Lecce|IT|Italy|18.026509|40.397507|ARPAP
-|54|Bari - Cavour|Bari|Corso Cavour|RRQA|PUBBLICO|Bari|IT|Italy|16.872552|41.122269|ARPAP
-|55|Bari - Kennedy|Bari|Piazza R. Kennedy|RRQA|PUBBLICO|Bari|IT|Italy|16.858905|41.099593|ARPAP
-|62|Lecce - Libertini|Lecce|Piazza Libertini|RRQA|PUBBLICO|Lecce|IT|Italy|18.176667|40.351945|ARPAP
-|63|Andria - Vaccina|Andria|Via Vaccina|RRQA|PUBBLICO|BAT|IT|Italy|16.303939|41.233278|ARPAP
-|64|Altamura - Via Santeramo|Altamura|Via Golgota|RRQA|PUBBLICO|Bari|IT|Italy|16.561015|40.828848|ARPAP
-|65|Casamassima - LaPenna|Casamassima|Via Lapenna|RRQA|PUBBLICO|Bari|IT|Italy|16.920731|40.953154|ARPAP
-|66|Monopoli - Aldo Moro|Monopoli|Viale Aldo Moro|RRQA|PUBBLICO|Bari|IT|Italy|17.290285|40.951167|ARPAP
-|67|Brindisi - Terminal Passeggeri|Brindisi|presso Terninal Passeggeri sulla banchina portuale di Costa Morena|RRQA|PUBBLICO|Brindisi|IT|Italy|17.961687|40.647432|ARPAP
-|71|Barletta - Casardi|Barletta|via Casardi|RRQA|PUBBLICO|BAT|IT|Italy|16.286111|41.316666|ARPAP
-|72|Francavilla Fontana|Francavilla Fontana|Via Fabio Filzi|RRQA|PUBBLICO|Brindisi|IT|Italy|17.588331|40.529163|ARPAP
-|75|Massafra|Massafra|Via Frappietri|RRQA|PUBBLICO|Taranto|IT|Italy|17.116690|40.593761|ARPAP
-|76|Foggia - Rosati|Foggia|Via Giuseppe Rosati 139|RRQA|PUBBLICO|Foggia|IT|Italy|15.548611|41.455555|ARPAP
-|77|Brindisi - Perrino|Brindisi|Via Crati|RRQA|PUBBLICO|Brindisi|IT|Italy|17.954778|40.631361|ARPAP
-|78|Brindisi - Cappuccini|Brindisi|Via Cappuccini|IL|PUBBLICO|Brindisi|IT|Italy|17.921778|40.630917|ARPAP
-|81|Bari - Carbonara|Bari|via Loguercio|RRQA|PUBBLICO|Bari|IT|Italy|16.866944|41.076666|ARPAP
-|85|San Severo - Azienda Russo|San Severo|Localita` Palmori|RRQA|PUBBLICO|Foggia|IT|Italy|15.440833|41.546666|ARPAP
-|90|Bari - CUS|Bari|Lungomare Starita presso CUS BARI|RRQA|PUBBLICO|Bari|IT|Italy|16.845277|41.134722|ARPAP
-|92|Monopoli - Liceo Artistico Russo|Monopoli|Via Cosimo Pisonio|RRQA|PUBBLICO|Bari|IT|Italy|17.284267|40.961578|ARPAP
-|93|Torchiarolo - Fanin     |Torchiarolo|Via FANIN SN - 72020 TORCHIAROLO      |RRQA|PUBBLICO|Brindisi|IT|Italy|18.047226|40.489447|ARPAP
-|94|Torchiarolo-Lendinuso|Torchiarolo|C.da MONTEVACCARO SN - 72020 TORCHIAROLO      |IL|PUBBLICO|Brindisi|IT|Italy|18.078880|40.517502|ARPAP
-|95|Surbo - Croce |Surbo|Via B. Croce  S.N. - 73010 SURBO    |RRQA|PUBBLICO|Lecce|IT|Italy|18.120835|40.411940|ARPAP
-|96|Ceglie Messapica|Ceglie Messapica|via Martina  (Scuola Elementare Papa Giovanni XXIII )|RRQA|PUBBLICO|Brindisi|IT|Italy|17.512500|40.649166|ARPAP
-|97|Modugno - EN02|Modugno|Viale delle Magnolie 6|RRQA|PUBBLICO|Bari|IT|Italy|16.766111|41.107777|ARPAP
-|98|Modugno - EN03|Modugno|Via Maranda|RRQA|PUBBLICO|Bari|IT|Italy|16.781672|41.087222|ARPAP
-|99|Modugno - EN04|Modugno|Via Ancona|RRQA|PUBBLICO|Bari|IT|Italy|16.787777|41.114444|ARPAP
-|100|Cokeria|Taranto|---|ADI|PRIVATO|ILVA|IT|Italy|17.217630|40.502050|ARPAP
-|101|Tamburi - Via Orsini|Taranto|---|ADI|PRIVATO|ILVA|IT|Italy|17.225830|40.494510|ARPAP
-|102|Riv1|Taranto|---|ADI|PRIVATO|ILVA|IT|Italy|17.216900|40.518570|ARPAP
-|103|Direzione|Taranto|---|ADI|PRIVATO|ILVA|IT|Italy|17.200550|40.501980|ARPAP
-|104|Meteo Parchi|Taranto|---|ADI|PRIVATO|ILVA|IT|Italy|17.222180|40.496730|ARPAP
-|105|Portineria C|Taranto|---|ADI|PRIVATO|ILVA|IT|Italy|17.186560|40.518900|ARPAP
-|106|Bitonto - EN01|Bitonto|Agro Di Bitonto|IL|PRIVATO|Bari|IT|Italy|16.745277|41.079166|ARPAP
-|107|Palo del Colle - EN05|Palo del Colle|Via Ungaretti|IL|PRIVATO|Bari|IT|Italy|16.700830|41.061388|ARPAP
-|108|Cisternino|Cisternino|via Benedetto Croce|RRQA|PUBBLICO|Brindisi|IT|Italy|17.415833|40.742777|ARPAP
-|109|Barletta - Mezzo Mobile Via Trani|Barletta|---|IL|PRIVATO|BAT|IT|Italy|16.293055|41.318333|ARPAP
-|110|Candela - Scuola|Candela|---|IL|PRIVATO|Foggia|IT|Italy|15.519444|41.133055|ARPAP
-|111|Candela - Ex Comes|Candela|---|IL|PRIVATO|Foggia|IT|Italy|15.523055|41.173055|ARPAP
-|112|San Severo  - Municipio|San Severo|---|RRQA|PUBBLICO|Foggia|IT|Italy|15.379722|41.696944|ARPAP
-|113|Galatina-Colacem|Galatina|Contrada Piani|IL|PUBBLICO|Lecce|IT|Italy|18.192856|40.163964|ARPAP
-|114|C1 - Lato sud ovest impianti| Area imprese Brindisi|Zona industriale - Via Leonardo da Vinci|VERSALIS|PRIVATO|Brindisi|IT|Italy|17.990417|40.628028|ARPAP
-|115|C2 - Area bacino idrico|Brindisi Zona industriale | Via Giuseppe Verdi|VERSALIS|PRIVATO|Brindisi|IT|Italy|17.988500|40.638889|ARPAP
-|116|C3 - Area impianto P1CR Cracking|Brindisi Zona industriale| Via Aldo Moro|VERSALIS|PRIVATO|Brindisi|IT|Italy|17.998139|40.638139|ARPAP
-|117|C4 - Area impianto Butadiene|Brindisi Zona industriale |Via Enrico Fermi|VERSALIS|PRIVATO|Brindisi|IT|Italy|18.002444|40.634444|ARPAP
-|118|C5 - Area Pontile|Brindisi Zona industriale| Via Galileo Galilei|VERSALIS|PRIVATO|Brindisi|IT|Italy|17.989981|40.645450|ARPAP
-|119|C6 - Area PE1/2 lato sud impianti|Brindisi Zona industriale| Via Alessandro Volta|VERSALIS|PRIVATO|Brindisi|IT|Italy|18.001614|40.623753|ARPAP
+|Regione|             Inquinante                                     |  
+| -------- | -------------------------------------------------------- | 
+ABRUZZO|Sulphur dioxide (air)|ABRUZZO - Sulphur dioxide (air)
+ABRUZZO|Carbon monoxide (air)|ABRUZZO - Carbon monoxide (air)
+ABRUZZO|Benzene (air)|ABRUZZO - Benzene (air)
+ABRUZZO|Particulate matter < 10 µm (aerosol)|ABRUZZO - Particulate matter < 10 µm (aerosol)
+ABRUZZO|Particulate matter < 2.5 µm (aerosol)|ABRUZZO - Particulate matter < 2.5 µm (aerosol)
+ABRUZZO|Ozone (air)|ABRUZZO - Ozone (air)
+ABRUZZO|Nitrogen dioxide (air)|ABRUZZO - Nitrogen dioxide (air)
+BASILICATA|Sulphur dioxide (air)|BASILICATA - Sulphur dioxide (air)
+BASILICATA|Carbon monoxide (air)|BASILICATA - Carbon monoxide (air)
+BASILICATA|Benzene (air)|BASILICATA - Benzene (air)
+BASILICATA|Particulate matter < 10 µm (aerosol)|BASILICATA - Particulate matter < 10 µm (aerosol)
+BASILICATA|Particulate matter < 2.5 µm (aerosol)|BASILICATA - Particulate matter < 2.5 µm (aerosol)
+BASILICATA|Ozone (air)|BASILICATA - Ozone (air)
+BASILICATA|Nitrogen dioxide (air)|BASILICATA - Nitrogen dioxide (air)
+CALABRIA|Sulphur dioxide (air)|CALABRIA - Sulphur dioxide (air)
+CALABRIA|Carbon monoxide (air)|CALABRIA - Carbon monoxide (air)
+CALABRIA|Benzene (air)|CALABRIA - Benzene (air)
+CALABRIA|Particulate matter < 10 µm (aerosol)|CALABRIA - Particulate matter < 10 µm (aerosol)
+CALABRIA|Particulate matter < 2.5 µm (aerosol)|CALABRIA - Particulate matter < 2.5 µm (aerosol)
+CALABRIA|Ozone (air)|CALABRIA - Ozone (air)
+CALABRIA|Nitrogen dioxide (air)|CALABRIA - Nitrogen dioxide (air)
+CAMPANIA|Sulphur dioxide (air)|CAMPANIA - Sulphur dioxide (air)
+CAMPANIA|Carbon monoxide (air)|CAMPANIA - Carbon monoxide (air)
+CAMPANIA|Benzene (air)|CAMPANIA - Benzene (air)
+CAMPANIA|Particulate matter < 10 µm (aerosol)|CAMPANIA - Particulate matter < 10 µm (aerosol)
+CAMPANIA|Particulate matter < 2.5 µm (aerosol)|CAMPANIA - Particulate matter < 2.5 µm (aerosol)
+CAMPANIA|Ozone (air)|CAMPANIA - Ozone (air)
+CAMPANIA|Nitrogen dioxide (air)|CAMPANIA - Nitrogen dioxide (air)
+EMILIA ROMAGNA|Sulphur dioxide (air)|EMILIA_ROMAGNA - Sulphur dioxide (air)
+EMILIA ROMAGNA|Carbon monoxide (air)|EMILIA_ROMAGNA - Carbon monoxide (air)
+EMILIA ROMAGNA|Benzene (air)|EMILIA_ROMAGNA - Benzene (air)
+EMILIA ROMAGNA|Particulate matter < 10 µm (aerosol)|EMILIA_ROMAGNA - Particulate matter < 10 µm (aerosol)
+EMILIA ROMAGNA|Particulate matter < 2.5 µm (aerosol)|EMILIA_ROMAGNA - Particulate matter < 2.5 µm (aerosol)
+EMILIA ROMAGNA|Ozone (air)|EMILIA_ROMAGNA - Ozone (air)
+EMILIA ROMAGNA|Nitrogen dioxide (air)|EMILIA_ROMAGNA - Nitrogen dioxide (air)
+FRIULI VENEZIA GIULIA|Sulphur dioxide (air)|FRIULI_VENEZIA_GIULIA - Sulphur dioxide (air)
+FRIULI VENEZIA GIULIA|Carbon monoxide (air)|FRIULI_VENEZIA_GIULIA - Carbon monoxide (air)
+FRIULI VENEZIA GIULIA|Benzene (air)|FRIULI_VENEZIA_GIULIA - Benzene (air)
+FRIULI VENEZIA GIULIA|Particulate matter < 10 µm (aerosol)|FRIULI_VENEZIA_GIULIA - Particulate matter < 10 µm (aerosol)
+FRIULI VENEZIA GIULIA|Particulate matter < 2.5 µm (aerosol)|FRIULI_VENEZIA_GIULIA - Particulate matter < 2.5 µm (aerosol)
+FRIULI VENEZIA GIULIA|Ozone (air)|FRIULI_VENEZIA_GIULIA - Ozone (air)
+FRIULI VENEZIA GIULIA|Nitrogen dioxide (air)|FRIULI_VENEZIA_GIULIA - Nitrogen dioxide (air)
+LAZIO|Sulphur dioxide (air)|LAZIO - Sulphur dioxide (air)
+LAZIO|Carbon monoxide (air)|LAZIO - Carbon monoxide (air)
+LAZIO|Benzene (air)|LAZIO - Benzene (air)
+LAZIO|Particulate matter < 10 µm (aerosol)|LAZIO - Particulate matter < 10 µm (aerosol)
+LAZIO|Particulate matter < 2.5 µm (aerosol)|LAZIO - Particulate matter < 2.5 µm (aerosol)
+LAZIO|Ozone (air)|LAZIO - Ozone (air)
+LAZIO|Nitrogen dioxide (air)|LAZIO - Nitrogen dioxide (air)
+LIGURIA|Sulphur dioxide (air)|LIGURIA - Sulphur dioxide (air)
+LIGURIA|Carbon monoxide (air)|LIGURIA - Carbon monoxide (air)
+LIGURIA|Benzene (air)|LIGURIA - Benzene (air)
+LIGURIA|Particulate matter < 10 µm (aerosol)|LIGURIA - Particulate matter < 10 µm (aerosol)
+LIGURIA|Particulate matter < 2.5 µm (aerosol)|LIGURIA - Particulate matter < 2.5 µm (aerosol)
+LIGURIA|Ozone (air)|LIGURIA - Ozone (air)
+LIGURIA|Nitrogen dioxide (air)|LIGURIA - Nitrogen dioxide (air)
+LOMBARDIA|Sulphur dioxide (air)|LOMBARDIA - Sulphur dioxide (air)
+LOMBARDIA|Carbon monoxide (air)|LOMBARDIA - Carbon monoxide (air)
+LOMBARDIA|Benzene (air)|LOMBARDIA - Benzene (air)
+LOMBARDIA|Particulate matter < 10 µm (aerosol)|LOMBARDIA - Particulate matter < 10 µm (aerosol)
+LOMBARDIA|Particulate matter < 2.5 µm (aerosol)|LOMBARDIA - Particulate matter < 2.5 µm (aerosol)
+LOMBARDIA|Ozone (air)|LOMBARDIA - Ozone (air)
+LOMBARDIA|Nitrogen dioxide (air)|LOMBARDIA - Nitrogen dioxide (air)
+MARCHE|Sulphur dioxide (air)|MARCHE - Sulphur dioxide (air)
+MARCHE|Carbon monoxide (air)|MARCHE - Carbon monoxide (air)
+MARCHE|Benzene (air)|MARCHE - Benzene (air)
+MARCHE|Particulate matter < 10 µm (aerosol)|MARCHE - Particulate matter < 10 µm (aerosol)
+MARCHE|Particulate matter < 2.5 µm (aerosol)|MARCHE - Particulate matter < 2.5 µm (aerosol)
+MARCHE|Ozone (air)|MARCHE - Ozone (air)
+MARCHE|Nitrogen dioxide (air)|MARCHE - Nitrogen dioxide (air)
+MOLISE|Sulphur dioxide (air)|MOLISE - Sulphur dioxide (air)
+MOLISE|Carbon monoxide (air)|MOLISE - Carbon monoxide (air)
+MOLISE|Benzene (air)|MOLISE - Benzene (air)
+MOLISE|Particulate matter < 10 µm (aerosol)|MOLISE - Particulate matter < 10 µm (aerosol)
+MOLISE|Particulate matter < 2.5 µm (aerosol)|MOLISE - Particulate matter < 2.5 µm (aerosol)
+MOLISE|Ozone (air)|MOLISE - Ozone (air)
+MOLISE|Nitrogen dioxide (air)|MOLISE - Nitrogen dioxide (air)
+PIEMONTE|Sulphur dioxide (air)|PIEMONTE - Sulphur dioxide (air)
+PIEMONTE|Carbon monoxide (air)|PIEMONTE - Carbon monoxide (air)
+PIEMONTE|Benzene (air)|PIEMONTE - Benzene (air)
+PIEMONTE|Particulate matter < 10 µm (aerosol)|PIEMONTE - Particulate matter < 10 µm (aerosol)
+PIEMONTE|Particulate matter < 2.5 µm (aerosol)|PIEMONTE - Particulate matter < 2.5 µm (aerosol)
+PIEMONTE|Ozone (air)|PIEMONTE - Ozone (air)
+PIEMONTE|Nitrogen dioxide (air)|PIEMONTE - Nitrogen dioxide (air)
+PUGLIA|Sulphur dioxide (air)|PUGLIA - Sulphur dioxide (air)
+PUGLIA|Carbon monoxide (air)|PUGLIA - Carbon monoxide (air)
+PUGLIA|Benzene (air)|PUGLIA - Benzene (air)
+PUGLIA|Particulate matter < 10 µm (aerosol)|PUGLIA - Particulate matter < 10 µm (aerosol)
+PUGLIA|Particulate matter < 2.5 µm (aerosol)|PUGLIA - Particulate matter < 2.5 µm (aerosol)
+PUGLIA|Ozone (air)|PUGLIA - Ozone (air)
+PUGLIA|Nitrogen dioxide (air)|PUGLIA - Nitrogen dioxide (air)
+SARDEGNA|Sulphur dioxide (air)|SARDEGNA - Sulphur dioxide (air)
+SARDEGNA|Carbon monoxide (air)|SARDEGNA - Carbon monoxide (air)
+SARDEGNA|Benzene (air)|SARDEGNA - Benzene (air)
+SARDEGNA|Particulate matter < 10 µm (aerosol)|SARDEGNA - Particulate matter < 10 µm (aerosol)
+SARDEGNA|Particulate matter < 2.5 µm (aerosol)|SARDEGNA - Particulate matter < 2.5 µm (aerosol)
+SARDEGNA|Ozone (air)|SARDEGNA - Ozone (air)
+SARDEGNA|Nitrogen dioxide (air)|SARDEGNA - Nitrogen dioxide (air)
+SICILIA|Sulphur dioxide (air)|SICILIA - Sulphur dioxide (air)
+SICILIA|Carbon monoxide (air)|SICILIA - Carbon monoxide (air)
+SICILIA|Benzene (air)|SICILIA - Benzene (air)
+SICILIA|Particulate matter < 10 µm (aerosol)|SICILIA - Particulate matter < 10 µm (aerosol)
+SICILIA|Particulate matter < 2.5 µm (aerosol)|SICILIA - Particulate matter < 2.5 µm (aerosol)
+SICILIA|Ozone (air)|SICILIA - Ozone (air)
+SICILIA|Nitrogen dioxide (air)|SICILIA - Nitrogen dioxide (air)
+TOSCANA|Sulphur dioxide (air)|TOSCANA - Sulphur dioxide (air)
+TOSCANA|Carbon monoxide (air)|TOSCANA - Carbon monoxide (air)
+TOSCANA|Benzene (air)|TOSCANA - Benzene (air)
+TOSCANA|Particulate matter < 10 µm (aerosol)|TOSCANA - Particulate matter < 10 µm (aerosol)
+TOSCANA|Particulate matter < 2.5 µm (aerosol)|TOSCANA - Particulate matter < 2.5 µm (aerosol)
+TOSCANA|Ozone (air)|TOSCANA - Ozone (air)
+TOSCANA|Nitrogen dioxide (air)|TOSCANA - Nitrogen dioxide (air)
+UMBRIA|Sulphur dioxide (air)|UMBRIA - Sulphur dioxide (air)
+UMBRIA|Carbon monoxide (air)|UMBRIA - Carbon monoxide (air)
+UMBRIA|Benzene (air)|UMBRIA - Benzene (air)
+UMBRIA|Particulate matter < 10 µm (aerosol)|UMBRIA - Particulate matter < 10 µm (aerosol)
+UMBRIA|Particulate matter < 2.5 µm (aerosol)|UMBRIA - Particulate matter < 2.5 µm (aerosol)
+UMBRIA|Ozone (air)|UMBRIA - Ozone (air)
+UMBRIA|Nitrogen dioxide (air)|UMBRIA - Nitrogen dioxide (air)
+VALLE AOSTA|Benzene (air)|VALLE_AOSTA - Benzene (air)
+VALLE AOSTA|Particulate matter < 10 µm (aerosol)|VALLE_AOSTA - Particulate matter < 10 µm (aerosol)
+VALLE AOSTA|Particulate matter < 2.5 µm (aerosol)|VALLE_AOSTA - Particulate matter < 2.5 µm (aerosol)
+VALLE AOSTA|Ozone (air)|VALLE_AOSTA - Ozone (air)
+VALLE AOSTA|Nitrogen dioxide (air)|VALLE_AOSTA - Nitrogen dioxide (air)
+VENETO|Sulphur dioxide (air)|VENETO - Sulphur dioxide (air)
+VENETO|Carbon monoxide (air)|VENETO - Carbon monoxide (air)
+VENETO|Benzene (air)|VENETO - Benzene (air)
+VENETO|Particulate matter < 10 µm (aerosol)|VENETO - Particulate matter < 10 µm (aerosol)
+VENETO|Particulate matter < 2.5 µm (aerosol)|VENETO - Particulate matter < 2.5 µm (aerosol)
+VENETO|Ozone (air)|VENETO - Ozone (air)
+VENETO|Nitrogen dioxide (air)|VENETO - Nitrogen dioxide (air)
 
-1. Particolare importanza assume l`individuazione dell``id_station` perchè sarà, di fatto, l`unico dato da modificare nella stringa di lettura dei dati.
-1. La stringa di lettura è la seguente:
 
-   https://dati.arpa.puglia.it/api/v1/measurements?language=ITA&format=CSV&network=RRQA&id_station=26&debugMode=false
+Oltre che le Provincie Autonome:
 
-   può essere utilizzare anche nel normale browser. La sua consultazione genererà il download di un file che potrete leggere ed apprezzare soprattutto perchè per la centralina che avrete individuato, vi consentirà di sapere quali sono i dati pubblicati da ARPA.
+|Regione|             Inquinante                                     |  
+| -------- | -------------------------------------------------------- | 
+BOLZANO|Sulphur dioxide (air)|PA_BOLZANO - Sulphur dioxide (air)
+BOLZANO|Carbon monoxide (air)|PA_BOLZANO - Carbon monoxide (air)
+BOLZANO|Benzene (air)|PA_BOLZANO - Benzene (air)
+BOLZANO|Particulate matter < 10 µm (aerosol)|PA_BOLZANO - Particulate matter < 10 µm (aerosol)
+BOLZANO|Particulate matter < 2.5 µm (aerosol)|PA_BOLZANO - Particulate matter < 2.5 µm (aerosol)
+BOLZANO|Ozone (air)|PA_BOLZANO - Ozone (air)
+BOLZANO|Nitrogen dioxide (air)|PA_BOLZANO - Nitrogen dioxide (air)
+TRENTO|Sulphur dioxide (air)|PA_TRENTO - Sulphur dioxide (air)
+TRENTO|Carbon monoxide (air)|PA_TRENTO - Carbon monoxide (air)
+TRENTO|Benzene (air)|PA_TRENTO - Benzene (air)
+TRENTO|Particulate matter < 10 µm (aerosol)|PA_TRENTO - Particulate matter < 10 µm (aerosol)
+TRENTO|Particulate matter < 2.5 µm (aerosol)|PA_TRENTO - Particulate matter < 2.5 µm (aerosol)
+TRENTO|Ozone (air)|PA_TRENTO - Ozone (air)
+TRENTO|Nitrogen dioxide (air)|PA_TRENTO - Nitrogen dioxide (air)
 
-1. Sostituire l``id_station` con quello della stazione desiderata:
 
-      `https://dati.arpa.puglia.it/api/v1/measurements?language=ITA&format=CSV&network=RRQA&`**id_station=26**`&debugMode=false`
+1. La procedura da seuigre per individuare il dato è la seguente:
+- Accedere alla pagine del [download](https://sinacloud.isprambiente.it/portal/apps/experiencebuilder/experience/?data_id=dataSource_137-infoariadowload_7094-infoariadowload%3A127&draft=true&id=df677d20871d4383b34ce355e24f0598&page=page_74)
+- Selezionare la Regione della quale si vuole acquisire il dato inquinante ed individuare il rigo dell'inquinante. Il terzo campo della tabella conterrà il link per il download che bisognerà copiare per inserirlo nel flusso di Node-RED.
+  
+  Ad esempio, volendo conoscere il dato di SO2 per la Regione Abruzzo, otterremo il seguente link:
 
-1. Provate la stringa e se la risposta è giusta (sarà di facile lettura) conservartela per inserirla nel giusto nodo NodeRED. 
+    `https://sdi.isprambiente.it/geoserver/infoaria/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=infoaria%3Adati_nrt_informambiente_mv&CQL_FILTER=region_name=%27ABRUZZO%27+AND+pollutant_id=%271%27&maxFeatures=10000&outputFormat=csv `
 
+   può essere utilizzare anche nel normale browser. La sua consultazione genererà il download di un file che potrete leggere ed apprezzare soprattutto perchè per la centralina che avrete individuato, vi consentirà di sapere quali sono i dati pubblicati da ISPRA.
 
     
-### 3 - Configurazione Home Assistant
+### 3 - Configurazione in Node-RED
 
-1. Scaricare tutti i files;
+1. Creare i sensori:
+- Editare i singoli `sensor node` creando una nuona configurazione per ogni sensore. In pratica:
+- selezionare tra le `home assistant entities` il nodo `sensor` e trasportarlo nel flusso;
+- editate il nodo `sensor`;
+- cliccare su `+` dopo la voce `Entity config`;
+- inserire il nome del sensore nel campo `nome`;
+- cliccare su `+` dopo la voce `Device` e nella successva maschera inserire ad esempio `Node-RED`;
+- nel campo `type` inserire la voce `sensor`;
+- nel campo `Friendly name` il nome del sensore, ad esempio `CO Orario`;
+- nel campo `Unit of measurement` l'unità di misura, ad esempio `mg/m³`;
+- in alto cliccare su `Add`. Il rpogramma tornerà alla schermata precedente di configurazione del sensore;
+- inserire un nome da attribuire al `sensor`, ad esempio `CO Orario`;
+- nel campo `Entity config` avremo il nome del sensore creato in precedenza;
+- nel campo `state` inserire `payload.data_record_value`, dopo `msg.`;
+- cliccare su `+ add attribute` ed aggiungere i seguenti campi:
+
+|Attributo |           Msg da inserire |
+| -------- | -------------------------------------------------------- | 
+luogo |msg.payload.municipality_name
+indirizzo |msg.payload.station_municipality
+codice_europeo |msg.payload.station_eu_code
+inquinante_sigla |msg.payload.pollutant_notation
+inquinante_descrizione |msg.payload.pollutant_label
+data_rilevazione |msg.payload.data_record_end_time
+unita_misura |msg.payload.observation_unit_notation
+livello_inquinante |msg.payload.pollutant_level
+posizione_stazione |msg.payload.station_position
+limite | 10 mg/m3 ogni 8 ore
+
+
+
+   
+   
 1. Copiare il contenuto di `sensori HA.txt` in  `configuration.yaml`. Se la voce `mqtt:` è già presente, accodate i sensori a quelli già presenti;
 1. Potete aggiungere altri sensori rekativi agli inquinanti se la centraline da voi scelte ne espongono di diversi, la configurazione è identica per tutti, basta cambiare il nome;
 1. La seguente configurazione esporrà i sensori in HA come vedete di seguito:
