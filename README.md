@@ -291,6 +291,17 @@ livello_inquinante |msg.payload.pollutant_level
 posizione_stazione |msg.payload.station_position
 limite | 10 mg/m3 ogni 8 ore
 
+- i sensori da configurare sono quelli relativi ad ogni singolo inquinante, quindi CO, SO2, C6H6, PM10, PM2.5, O3 ed NO2:
+
+
+
+
+
+
+
+
+
+
 
 
    
