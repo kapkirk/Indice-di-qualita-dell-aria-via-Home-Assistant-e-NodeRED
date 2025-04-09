@@ -272,7 +272,11 @@ TRENTO|Nitrogen dioxide (air)|PA_TRENTO - Nitrogen dioxide (air)
 - nel campo `type` inserire la voce `sensor`;
 - nel campo `Friendly name` il nome del sensore, ad esempio `CO Orario`;
 - nel campo `Unit of measurement` l'unità di misura, ad esempio `mg/m³`;
-- in alto cliccare su `Add`. Il rpogramma tornerà alla schermata precedente di configurazione del sensore;
+- in alto cliccare su `Add`. Il rpogramma tornerà alla schermata precedente di configurazione del sensore, ottenendo la seguente configurazione:
+
+![sensore](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Sensore.png)
+
+  
 - inserire un nome da attribuire al `sensor`, ad esempio `CO Orario`;
 - nel campo `Entity config` avremo il nome del sensore creato in precedenza;
 - nel campo `state` inserire `payload.data_record_value`, dopo `msg.`;
@@ -291,7 +295,13 @@ livello_inquinante |msg.payload.pollutant_level
 posizione_stazione |msg.payload.station_position
 limite | 10 mg/m3 ogni 8 ore
 
-- i sensori da configurare sono quelli relativi ad ogni singolo inquinante, quindi CO, SO2, C6H6, PM10, PM2.5, O3 ed NO2:
+- i sensori da configurare sono quelli relativi ad ogni singolo inquinante, quindi CO, SO2, C6H6, PM10, PM2.5, O3 ed NO2. Il risultato finale dovrebbe essere questo:
+
+
+![sensore1](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Sensore_nodo.jpg)
+
+
+
 
 
 
