@@ -6,7 +6,14 @@
 ---   
 # Acquisizione dati inquinanti ambientali ARPA Puglia in Home Assistant
 
-Una utility [Home Assistant](https://home-assistant.io/) che ti aiuta a visualizzare i dati dei principali indicatori ambientali pubblicati da ARPA Puglia utilizzando [Node-RED](https://nodered.org/).
+Una utility [Home Assistant](https://home-assistant.io/) che ti aiuta a visualizzare la qualità dell'aria ed i singoli dati dei principali inquinanti ambientali pubblicati da [I.S.P.R.A.](https://www.isprambiente.gov.it/it/) (Istituo Superiore per la Protezione e la Ricerca Ambientale) utilizzando i dati forniti dalle Regioni italiane in ["quasi tempo reale"](https://www.isprambiente.gov.it/it/attivita/aria-1/qualita-dellaria/dati-in-tempo-quasi-reale).
+
+Come è possibile leggere nella pagine dell'Istituto italiano:
+
+      `I dati in “tempo quasi reale”, sono raccolti e trasmessi da parte delle Regioni e Province Autonome, ossia con un minimo fisiologico ritardo (di qualche ora), vengono trasmessi quotidianamente dall’ ISPRA alla Commissione Europea. Si tratta di dati caratterizzati da un livello minimo di validazione ovvero che non sono stati sottoposti ai processi di validazione previsti successivamente all’acquisizione della misura ed è quindi possibile che in un secondo momento vengano corretti.
+      Nella dashboard qui pubblicata è possibile consultare i dati in tempo quasi reale relativi agli inquinanti NO2, O3, PM10, PM2,5, C6H6, CO e SO2.`
+
+
 
 <br>
 
