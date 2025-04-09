@@ -1,17 +1,23 @@
 # Indice di qualità dell'aria Via Home Assistant
 
-| [italiano](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant#acquisizione-dati-inquinanti-ambientali-arpa-puglia-in-home-assistant) | [inglese](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant#arpa-puglia-environmental-pollutant-data-acquisition-in-home-assistant) |
+| [italiano](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#acquisizione-dati-inquinanti-ambientali-arpa-puglia-in-home-assistant) | [inglese](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#arpa-puglia-environmental-pollutant-data-acquisition-in-home-assistant) |
 
-![](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant/blob/main/images/HA%20logo2.png)  ` ` ![](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant/blob/main/images/MQTT.png)            `  `
+![](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/HA%20logo2.png)  ` ` ![](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/MQTT.png)            `  `
 ---   
 # Acquisizione dati inquinanti ambientali ARPA Puglia in Home Assistant
 
-Una utility [Home Assistant](https://home-assistant.io/) che ti aiuta a visualizzare la qualità dell'aria ed i singoli dati dei principali inquinanti ambientali pubblicati da [I.S.P.R.A.](https://www.isprambiente.gov.it/it/) (Istituo Superiore per la Protezione e la Ricerca Ambientale) utilizzando i dati forniti dalle Regioni italiane in ["quasi tempo reale"](https://www.isprambiente.gov.it/it/attivita/aria-1/qualita-dellaria/dati-in-tempo-quasi-reale).
+Una utility [Home Assistant](https://home-assistant.io/) che ti aiuta a visualizzare la qualità dell'aria ed i singoli dati dei principali inquinanti ambientali pubblicati da [I.S.P.R.A.](https://www.isprambiente.gov.it/it/) (**Istituto Superiore per la Protezione e la Ricerca Ambientale**) utilizzando i dati forniti dalle Regioni italiane in ["quasi tempo reale"](https://www.isprambiente.gov.it/it/attivita/aria-1/qualita-dellaria/dati-in-tempo-quasi-reale).
 
 Come è possibile leggere nella pagine dell'Istituto italiano:
 
-      `I dati in “tempo quasi reale”, sono raccolti e trasmessi da parte delle Regioni e Province Autonome, ossia con un minimo fisiologico ritardo (di qualche ora), vengono trasmessi quotidianamente dall’ ISPRA alla Commissione Europea. Si tratta di dati caratterizzati da un livello minimo di validazione ovvero che non sono stati sottoposti ai processi di validazione previsti successivamente all’acquisizione della misura ed è quindi possibile che in un secondo momento vengano corretti.
-      Nella dashboard qui pubblicata è possibile consultare i dati in tempo quasi reale relativi agli inquinanti NO2, O3, PM10, PM2,5, C6H6, CO e SO2.`
+      `I dati in “tempo quasi reale”, sono raccolti e trasmessi da parte delle Regioni e Province Autonome, ossia con un minimo 
+       fisiologico ritardo (di qualche ora), vengono trasmessi quotidianamente dall’ ISPRA alla Commissione Europea. 
+       Si tratta di dati caratterizzati da un livello minimo di validazione ovvero che non sono stati sottoposti ai processi 
+       di validazione previsti successivamente all’acquisizione della misura ed è quindi possibile che in un secondo momento 
+       vengano corretti.
+       
+       Nella dashboard qui pubblicata è possibile consultare i dati in tempo quasi reale relativi agli inquinanti 
+       NO2, O3, PM10, PM2,5, C6H6, CO e SO2.`
 
 
 
@@ -19,21 +25,21 @@ Come è possibile leggere nella pagine dell'Istituto italiano:
 
 ## Tavola dei Contenuti
 
-1. **[Descrizione del progetto](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant#descrizione-del-progetto)**
+1. **[Descrizione del progetto](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#descrizione-del-progetto)**
 
-2. **[Caratteristiche principali](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant#caratteristiche-principali)**
+2. **[Caratteristiche principali](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#caratteristiche-principali)**
 
-3. **[Descrizione del funzionamento](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant#descrizione-del-funzionamento)**
+3. **[Descrizione del funzionamento](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#descrizione-del-funzionamento)**
 
-4. **[Installazione](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant#installazione)**
-   1. **[Prerequisiti](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant#1---prerequisiti)**
-   1. **[Configurazione dei dati da acquisire](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant#2---configurazione-dei-dati-da-acquisire)**
-   1. **[Configurazione Home Assistant](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant#3---configurazione-home-assistant)**
-   2. **[Configurazione di Node-RED](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant#4---configurazione-di-node-red)**
+4. **[Installazione](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#installazione)**
+   1. **[Prerequisiti](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#1---prerequisiti)**
+   1. **[Configurazione dei dati da acquisire](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#2---configurazione-dei-dati-da-acquisire)**
+   1. **[Configurazione Home Assistant](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#3---configurazione-home-assistant)**
+   2. **[Configurazione di Node-RED](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#4---configurazione-di-node-red)**
 
-5. **[Personalizzazione dei flussi di NodeRed](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant#personalizzazione-ed-analisi-dei-flussi-nodered)**
+5. **[Personalizzazione dei flussi di NodeRed](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#personalizzazione-ed-analisi-dei-flussi-nodered)**
 
-6. **[Commento del codice](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant#commentiamolo)**  
+6. **[Commento del codice](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#commentiamolo)**  
  
 
  
@@ -206,7 +212,7 @@ Tutte le info sono disponibili sul sito di [ARPA Puglia](https://www.arpa.puglia
 1. Potete aggiungere altri sensori rekativi agli inquinanti se la centraline da voi scelte ne espongono di diversi, la configurazione è identica per tutti, basta cambiare il nome;
 1. La seguente configurazione esporrà i sensori in HA come vedete di seguito:
 
-![lovelace](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant/blob/main/images/Esposizione%20HA.jpg)
+![lovelace](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Esposizione%20HA.jpg)
 
 
 
@@ -338,7 +344,7 @@ mqtt:
 
 1. Nella _Dashbord_ della _lovelace_, dove preferite, aprite una nuova scheda ed incollate il codice del file `HA lovelace.txt` ed il risultato sarà questo:
 
-![lovelace](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant/blob/main/images/Lovelace%20Visualizzazione%20HA.jpg)
+![lovelace](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Lovelace%20Visualizzazione%20HA.jpg)
 
 codice:
 ```yaml
@@ -377,7 +383,7 @@ columns:
 
 `Flusso Node-RED singola centralina.json`:
 
-![nodered1](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant/blob/main/images/Flusso%20Node-RED.jpg)
+![nodered1](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Flusso%20Node-RED.jpg)
 
 
 codice:
@@ -387,7 +393,7 @@ codice:
 
 oppure `Flusso Node-RED più centralina.json`:
 
-![nodered2](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant/blob/main/images/Flusso%20Node-RED%20pi%C3%B9%20centraline.jpg)
+![nodered2](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Flusso%20Node-RED%20pi%C3%B9%20centraline.jpg)
 
 codice:
 ```json
@@ -402,7 +408,7 @@ codice:
 
 I flussi da me illustrati sono ovviamente meritevoli di sviluppo. Personalmente mi sono occupato di raccogliere i dati esposti dalle centraline vicine alle zone in cui abito ma ciò non toglie che si possano utilizzare tutti i valori a disposizione, ovvero quelli esposti nella tabella "Caratteristiche principali" sopra riportata. Il flusso NodeRED in questo caso sarà il seguente:
 
-![nodered3](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant/blob/main/images/Flusso%20Node-RED%20centralina%20completa.jpg)
+![nodered3](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Flusso%20Node-RED%20centralina%20completa.jpg)
 
 codice:
 ```json
