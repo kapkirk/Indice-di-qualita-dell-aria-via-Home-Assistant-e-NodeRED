@@ -2,7 +2,7 @@
 
 | [italiano](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#acquisizione-dati-inquinanti-ambientali-arpa-puglia-in-home-assistant) | [inglese](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#arpa-puglia-environmental-pollutant-data-acquisition-in-home-assistant) |
 
-![](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/HA%20logo2.png)  ` ` ![](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/MQTT.png)            `  `
+![](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/HA%20logo2.png)  ` ` ![](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Node-RED%20logo.jpg)            `  `
 ---   
 # Acquisizione dati inquinanti ambientali ARPA Puglia in Home Assistant
 
@@ -47,9 +47,9 @@ Come è possibile leggere nella pagine dell'Istituto italiano:
 
 ## Descrizione del progetto
 
-Scopo principale di queste righe è quello di automatizzare l`acquisizione giornaliera di dati ambientali pubblicati tramite API dalla Agenzia Regionale Protezione e Prevenzione Ambientale per la Puglia, la loro elaborazione tramite Node-RED e la successiva integrazione in Home Assistant tramite pubblicazione MQTT per la visualizzazione in tempo reale.
+Scopo principale di questo progetto  è quello di automatizzare l`acquisizione "in quasi tempo reale" di un indice di qualità dell'aria acquisendo i dati ambientali pubblicati tramite API dall'ISPRA che li acquisisce della diverse Agenzie Regionali di Protezione e Prevenzione Ambientale sparse su tutto il territorio nazionale, la loro elaborazione tramite Node-RED e la successiva integrazione in Home Assistant per la successiva visualizzazione.
 
-Tutte le info sono disponibili sul sito di [ARPA Puglia](https://www.arpa.puglia.it/pagina2795_aria.html) secondo la [mappa](https://dati.arpa.puglia.it/qaria?footer=false%EF%BB%BF) ed i dati utilizzati sono forniti da ARPA Puglia e rileasciati con licenza [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/deed.it). 
+Tutte le info sono disponibili sul sito dell'Istituto traime il [S.I.N.A.](https://sinacloud.isprambiente.it/portal/apps/experiencebuilder/experience/?draft=true&id=df677d20871d4383b34ce355e24f0598&page=page_38) (**Sistema Unformativo Nazionale Ambientale**) secondo la [mappa](https://dati.arpa.puglia.it/qaria?footer=false%EF%BB%BF) ed i dati sono disponbili per il [download](https://sinacloud.isprambiente.it/portal/apps/experiencebuilder/experience/?draft=true&id=df677d20871d4383b34ce355e24f0598&page=page_74). 
 
 ---
 
