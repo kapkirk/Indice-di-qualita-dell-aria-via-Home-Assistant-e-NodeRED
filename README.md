@@ -342,6 +342,7 @@ entities:
     - sensor.pm25_orario_2
     - sensor.no2_orario_2
     - sensor.co_orario_2
+    - sensor.o3_orario_2
     - sensor.c6h6_orario_2
   sort_by: name
 columns:
@@ -359,6 +360,86 @@ grid_options:
   columns: 15
   rows: 6
 ```
+
+Notate che, avendo eseguito diverse prove, i miei sensori in `Home Assistant` hanno il suffisso `_2`, eventualmente rimuovetelo.
+
+- Terminata questa fase l'ultimo step è quello di creare il sensore di qualità dell'aria basato su questi dati. La sua configurazione è un template che va configurtato come segue e restituirà il valore più basso tra quelli dei singoli sensori espresso sotto forma di giudizio sintetico:
+
+codice:
+```yaml
+    - name: "AQI"
+      unique_id: qualita_aria
+      state: >
+          {% set sensori = [
+            'sensor.pm10_orario_2',
+            'sensor.pm25_orario_2',
+            'sensor.no2_orario_2',
+            'sensor.so2_orario_2',
+            'sensor.co_orario_2',
+            'sensor.o3_orario_2',
+            'sensor.c6h6_orario_2'
+          ] %}
+          
+          {% set classi = {
+            6: 'ottima',
+            5: 'buona',
+            4: 'discreta',
+            3: 'sufficiente',
+            2: 'scarsa'
+          } %}
+          
+          {% set valori_numerici = [
+            state_attr('sensor.pm10_orario_2', 'livello_inquinante'),
+            state_attr('sensor.pm25_orario_2', 'livello_inquinante'),
+            state_attr('sensor.no2_orario_2', 'livello_inquinante'),
+            state_attr('sensor.so2_orario_2', 'livello_inquinante'),
+            state_attr('sensor.co_orario_2', 'livello_inquinante'),
+            state_attr('sensor.o3_orario_2', 'livello_inquinante'),
+            state_attr('sensor.c6h6_orario_2', 'livello_inquinante')
+          ] | select('!=', None) | list %}
+          
+          {% if valori_numerici %}
+            {% set valore_peggiore = valori_numerici | min %}
+            {{ classi[valore_peggiore] }}
+          {% else %}
+            non disponibile
+          {% endif %}
+```
+
+anche questo potrà essere viasualizzato nella Lovelace come meglio credete. Iol l'ho esposto sulla dashboard cellulare:
+
+![lovelace2](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/HA_lovelace2.jpg)
+
+
+che nella scheda dedicata:
+
+![lovelace3](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/HA_lovelace3.jpg)
+
+
+La seconda parte che vedete nella foto è quella dedicata ai dati ambientali proveniente da ARPA Puglia. In questo caso i dati sono pubblicati giornaliermente ma riferiti al giorno precedente e normalizzati dall'Ente. Se a qualcuno dovesse interessare questi sono i link al progetto:
+
+- [Implementazione in Home Assistant tramite Node-RED](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant-e-NodeRED)
+- [Implementazione in Home Assistant tramite Node-RED ed MQTT](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant)
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+  
+
 
 ### 4 - Configurazione di Node-RED
 
