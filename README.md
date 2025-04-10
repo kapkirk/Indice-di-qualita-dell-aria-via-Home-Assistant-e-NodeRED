@@ -3,9 +3,9 @@
 
 ![](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/HA%20logo2.png)  ` ` ![](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Node-RED%20logo.jpg)            `  `
 ---   
-# Acquisizione dati inquinanti ambientali ARPA Puglia in Home Assistant
 
-Una utility [Home Assistant](https://home-assistant.io/) che ti aiuta a visualizzare la qualità dell'aria ed i singoli dati dei principali inquinanti ambientali pubblicati da [I.S.P.R.A.](https://www.isprambiente.gov.it/it/) (**Istituto Superiore per la Protezione e la Ricerca Ambientale**) utilizzando i dati forniti dalle Regioni italiane in ["quasi tempo reale"](https://www.isprambiente.gov.it/it/attivita/aria-1/qualita-dellaria/dati-in-tempo-quasi-reale).
+
+Una utility [Home Assistant](https://home-assistant.io/) che ti aiuta a visualizzare il dato di qualità dell'aria, ed i singoli dati dei principali inquinanti ambientali, pubblicati da [I.S.P.R.A.](https://www.isprambiente.gov.it/it/) (**Istituto Superiore per la Protezione e la Ricerca Ambientale**) utilizzando i dati forniti dalle Regioni italiane in ["quasi tempo reale"](https://www.isprambiente.gov.it/it/attivita/aria-1/qualita-dellaria/dati-in-tempo-quasi-reale).
 
 Come è possibile leggere nella pagine dell'Istituto italiano:
 
