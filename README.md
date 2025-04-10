@@ -1,6 +1,5 @@
 # Indice di qualità dell'aria Via Home Assistant
 
-| [italiano](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#acquisizione-dati-inquinanti-ambientali-arpa-puglia-in-home-assistant) | [inglese](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#arpa-puglia-environmental-pollutant-data-acquisition-in-home-assistant) |
 
 ![](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/HA%20logo2.png)  ` ` ![](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Node-RED%20logo.jpg)            `  `
 ---   
@@ -25,18 +24,18 @@ Come è possibile leggere nella pagine dell'Istituto italiano:
 
 ## Tavola dei Contenuti
 
-1. **[Descrizione del progetto](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#descrizione-del-progetto)**
+1. **Descrizione del progetto**
 
-2. **[Caratteristiche principali](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#caratteristiche-principali)**
+2. **Caratteristiche principali](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#caratteristiche-principali)**
 
-3. **[Descrizione del funzionamento](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#descrizione-del-funzionamento)**
+3. **Descrizione del funzionamento](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#descrizione-del-funzionamento)**
 
-4. **[Installazione](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#installazione)**
-   1. **[Prerequisiti](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#1---prerequisiti)**
-   1. **[Configurazione dei dati da acquisire](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#2---configurazione-dei-dati-da-acquisire)**
-   1. **[Configurazione di Node-RED](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#3---configurazione-in-node-red)**
-   1. **[Gestione della Lovelace](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#4---Configurazione-Lovelace-di-Home-Assistant)**
-   1. **[Configurazione Sensore di Qualità dell'Aria](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#5---Configurazione-Sensore-di-Qualità-dell'Aria)**
+4. **Installazione**
+   1. **Prerequisiti**
+   1. **Configurazione dei dati da acquisire**
+   1. **Configurazione di Node-RED**
+   1. **Gestione della Lovelace**
+   1. **Configurazione Sensore di Qualità dell'Aria**
 
 
 
