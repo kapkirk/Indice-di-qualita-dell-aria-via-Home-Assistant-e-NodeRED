@@ -412,10 +412,13 @@ che nella scheda dedicata:
 ![lovelace3](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/HA_lovelace3.jpg)
 
 
-La seconda parte che vedete nella foto è quella dedicata ai dati ambientali proveniente da ARPA Puglia. In questo caso i dati sono pubblicati giornaliermente ma riferiti al giorno precedente e normalizzati dall'Ente. Se a qualcuno dovesse interessare questi sono i link al progetto:
+Il pulsante che vedete con l'etichetta (Aggiornamento dati ISPRA) è quello reso disponibile da Node-RED nella configurazione sopra esposta che utilizzo per l'aggiornamento manuale dei dati.
+
+La seconda parte che vedete nella foto, invece, è quella dedicata ai dati ambientali proveniente da ARPA Puglia. In questo caso i dati sono acquisiti, filtrati e validati dall'Ente che li pubblica con cadenza giornaliera, essi sono riferiti al giorno precedente. 
+Se a qualcuno dovessero interessare, questi sono i link ai due progetti:
 
 - [Implementazione in Home Assistant tramite Node-RED](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant-e-NodeRED)
 - [Implementazione in Home Assistant tramite Node-RED ed MQTT](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant)
   
 
-Lavoro finito!
+Lavoro finito e buon divertimento!
