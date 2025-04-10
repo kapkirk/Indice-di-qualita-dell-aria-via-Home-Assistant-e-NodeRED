@@ -87,7 +87,9 @@ Tutte le info sono disponibili sul sito dell'Istituto traime il [S.I.N.A.](https
 
 - Node-RED installato e configurato con nodi:
   - `node-red-contrib-http-request`
-- HACS installata e configurata con la custom `flex-table-card` (Se volete utilizzare la tabella di visualizzazione come ho fatto io).
+- HACS installata e configurata con:
+  - la custom `flex-table-card` (Se volete utilizzare la tabella di visualizzazione come ho fatto io).
+  - `Node-RED Companion` per l'interfaccia dei sensori.
 
 
 ### 2 - Configurazione dei dati da acquisire
@@ -312,186 +314,50 @@ codice:
 [{"id":"9341e81a2672a77b","type":"tab","label":"Dari Orari ISPRA","disabled":false,"info":"","env":[]},{"id":"86a27412fd248875","type":"http request","z":"9341e81a2672a77b","name":"","method":"GET","ret":"txt","paytoqs":"ignore","url":"https://sdi.isprambiente.it/geoserver/infoaria/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=infoaria%3Adati_nrt_informambiente_mv&CQL_FILTER=region_name=%27PUGLIA%27+AND+pollutant_id=%2710%27&maxFeatures=10000&outputFormat=csv","tls":"","persist":true,"proxy":"","insecureHTTPParser":true,"authType":"","senderr":false,"headers":[],"x":490,"y":200,"wires":[["129a117ec0480da4"]]},{"id":"129a117ec0480da4","type":"csv","z":"9341e81a2672a77b","name":"","spec":"rfc","sep":",","hdrin":true,"hdrout":"none","multi":"one","ret":"\\r\\n","temp":"","skip":"0","strings":true,"include_empty_strings":true,"include_null_values":true,"x":630,"y":200,"wires":[["0f80c4ac185f9d2b"]]},{"id":"d4c2feeff75e09fc","type":"http request","z":"9341e81a2672a77b","name":"","method":"GET","ret":"txt","paytoqs":"ignore","url":"https://sdi.isprambiente.it/geoserver/infoaria/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=infoaria%3Adati_nrt_informambiente_mv&CQL_FILTER=region_name=%27PUGLIA%27+AND+pollutant_id=%2720%27&maxFeatures=10000&outputFormat=csv","tls":"","persist":true,"proxy":"","insecureHTTPParser":false,"authType":"","senderr":false,"headers":[],"x":490,"y":320,"wires":[["6039f795bf127e3a"]]},{"id":"aa59fbdcd1545be8","type":"http request","z":"9341e81a2672a77b","name":"","method":"GET","ret":"txt","paytoqs":"ignore","url":"https://sdi.isprambiente.it/geoserver/infoaria/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=infoaria%3Adati_nrt_informambiente_mv&CQL_FILTER=region_name=%27PUGLIA%27+AND+pollutant_id=%275%27&maxFeatures=10000&outputFormat=csv","tls":"","persist":true,"proxy":"","insecureHTTPParser":false,"authType":"","senderr":false,"headers":[],"x":490,"y":380,"wires":[["10e322bfb597f397"]]},{"id":"d2e0462a8bfc7fc4","type":"http request","z":"9341e81a2672a77b","name":"","method":"GET","ret":"txt","paytoqs":"ignore","url":"https://sdi.isprambiente.it/geoserver/infoaria/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=infoaria%3Adati_nrt_informambiente_mv&CQL_FILTER=region_name=%27PUGLIA%27+AND+pollutant_id=%276001%27&maxFeatures=10000&outputFormat=csv","tls":"","persist":true,"proxy":"","insecureHTTPParser":false,"authType":"","senderr":false,"headers":[],"x":490,"y":440,"wires":[["a1f4b7fdd094dac2"]]},{"id":"d91e018119691670","type":"http request","z":"9341e81a2672a77b","name":"","method":"GET","ret":"txt","paytoqs":"ignore","url":"https://sdi.isprambiente.it/geoserver/infoaria/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=infoaria%3Adati_nrt_informambiente_mv&CQL_FILTER=region_name=%27PUGLIA%27+AND+pollutant_id=%277%27&maxFeatures=10000&outputFormat=csv","tls":"","persist":true,"proxy":"","insecureHTTPParser":false,"authType":"","senderr":false,"headers":[],"x":490,"y":500,"wires":[["2f140e806700e380"]]},{"id":"bc4ecc4da286b3c8","type":"http request","z":"9341e81a2672a77b","name":"","method":"GET","ret":"txt","paytoqs":"ignore","url":"https://sdi.isprambiente.it/geoserver/infoaria/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=infoaria%3Adati_nrt_informambiente_mv&CQL_FILTER=region_name=%27PUGLIA%27+AND+pollutant_id=%278%27&maxFeatures=10000&outputFormat=csv","tls":"","persist":true,"proxy":"","insecureHTTPParser":false,"authType":"","senderr":false,"headers":[],"x":490,"y":560,"wires":[["193995d8afc547b0"]]},{"id":"a76b8be52e38c6df","type":"csv","z":"9341e81a2672a77b","name":"","spec":"rfc","sep":",","hdrin":true,"hdrout":"none","multi":"one","ret":"\\r\\n","temp":"","skip":"0","strings":true,"include_empty_strings":true,"include_null_values":true,"x":630,"y":260,"wires":[["caa73170cbae11e6"]]},{"id":"6039f795bf127e3a","type":"csv","z":"9341e81a2672a77b","name":"","spec":"rfc","sep":",","hdrin":true,"hdrout":"none","multi":"one","ret":"\\r\\n","temp":"","skip":"0","strings":true,"include_empty_strings":true,"include_null_values":true,"x":630,"y":320,"wires":[["260a26186db8e11c"]]},{"id":"10e322bfb597f397","type":"csv","z":"9341e81a2672a77b","name":"","spec":"rfc","sep":",","hdrin":true,"hdrout":"none","multi":"one","ret":"\\r\\n","temp":"","skip":"0","strings":true,"include_empty_strings":true,"include_null_values":true,"x":630,"y":380,"wires":[["0efe1d45b2822b0a"]]},{"id":"a1f4b7fdd094dac2","type":"csv","z":"9341e81a2672a77b","name":"","spec":"rfc","sep":",","hdrin":true,"hdrout":"none","multi":"one","ret":"\\r\\n","temp":"","skip":"0","strings":true,"include_empty_strings":true,"include_null_values":true,"x":630,"y":440,"wires":[["d5b73c602d374caa"]]},{"id":"2f140e806700e380","type":"csv","z":"9341e81a2672a77b","name":"","spec":"rfc","sep":",","hdrin":true,"hdrout":"none","multi":"one","ret":"\\r\\n","temp":"","skip":"0","strings":true,"include_empty_strings":true,"include_null_values":true,"x":630,"y":500,"wires":[["5bcf5b37d42bdfee"]]},{"id":"193995d8afc547b0","type":"csv","z":"9341e81a2672a77b","name":"","spec":"rfc","sep":",","hdrin":true,"hdrout":"none","multi":"one","ret":"\\r\\n","temp":"","skip":"0","strings":true,"include_empty_strings":true,"include_null_values":true,"x":630,"y":560,"wires":[["65f747768b243167"]]},{"id":"3d80e107b51013e6","type":"http request","z":"9341e81a2672a77b","name":"","method":"GET","ret":"txt","paytoqs":"ignore","url":"https://sdi.isprambiente.it/geoserver/infoaria/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=infoaria%3Adati_nrt_informambiente_mv&CQL_FILTER=region_name=%27PUGLIA%27+AND+pollutant_id=%271%27&maxFeatures=10000&outputFormat=csv","tls":"","persist":true,"proxy":"","insecureHTTPParser":false,"authType":"","senderr":false,"headers":[],"x":490,"y":260,"wires":[["a76b8be52e38c6df"]]},{"id":"0f80c4ac185f9d2b","type":"switch","z":"9341e81a2672a77b","name":"","property":"payload.station_eu_code","propertyType":"msg","rules":[{"t":"eq","v":"IT1658A","vt":"str"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":810,"y":200,"wires":[["bf84667c52653692"],[]]},{"id":"70c367d7c81694b0","type":"ha-sensor","z":"9341e81a2672a77b","name":"CO Orario","entityConfig":"018d9c5d8af3c28a","version":0,"state":"payload.data_record_value","stateType":"msg","attributes":[{"property":"luogo","value":"payload.municipality_name","valueType":"msg"},{"property":"indirizzo","value":"payload.station_municipality","valueType":"msg"},{"property":"codice_europeo","value":"payload.station_eu_code","valueType":"msg"},{"property":"inquinante_sigla","value":"payload.pollutant_notation","valueType":"msg"},{"property":"inquinante_descrizione","value":"payload.pollutant_label","valueType":"msg"},{"property":"data_rilevazione","value":"payload.data_record_end_time","valueType":"msg"},{"property":"unita_misura","value":"payload.observation_unit_notation","valueType":"msg"},{"property":"livello_inquinante","value":"payload.pollutant_level","valueType":"msg"},{"property":"posizione_stazione","value":"payload.station_position","valueType":"msg"},{"property":"limite","value":"10 mg/m3 ogni 8 ore","valueType":"str"}],"inputOverride":"allow","outputProperties":[],"x":1130,"y":200,"wires":[[]]},{"id":"0efe1d45b2822b0a","type":"switch","z":"9341e81a2672a77b","name":"","property":"payload.station_eu_code","propertyType":"msg","rules":[{"t":"eq","v":"IT1658A","vt":"str"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":810,"y":380,"wires":[["a7f2dabdfa56f504"],[]]},{"id":"d5b73c602d374caa","type":"switch","z":"9341e81a2672a77b","name":"","property":"payload.station_eu_code","propertyType":"msg","rules":[{"t":"eq","v":"IT1658A","vt":"str"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":810,"y":440,"wires":[["b8d2af647cf08a5a"],[]]},{"id":"5bcf5b37d42bdfee","type":"switch","z":"9341e81a2672a77b","name":"","property":"payload.station_eu_code","propertyType":"msg","rules":[{"t":"eq","v":"IT2139A","vt":"str"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":810,"y":500,"wires":[["cd5c61642abc1632"],[]]},{"id":"65f747768b243167","type":"switch","z":"9341e81a2672a77b","name":"","property":"payload.station_eu_code","propertyType":"msg","rules":[{"t":"eq","v":"IT1657A","vt":"str"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":810,"y":560,"wires":[["7db8532370fd384d"],[]]},{"id":"caa73170cbae11e6","type":"switch","z":"9341e81a2672a77b","name":"","property":"payload.station_eu_code","propertyType":"msg","rules":[{"t":"eq","v":"IT1658A","vt":"str"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":810,"y":260,"wires":[["494566f4d1175bf5"],[]]},{"id":"f359e094c2916855","type":"ha-sensor","z":"9341e81a2672a77b","name":"SO2 Orario","entityConfig":"d164653373b81866","version":0,"state":"payload.data_record_value","stateType":"msg","attributes":[{"property":"luogo","value":"payload.municipality_name","valueType":"msg"},{"property":"indirizzo","value":"payload.station_municipality","valueType":"msg"},{"property":"codice_europeo","value":"payload.station_eu_code","valueType":"msg"},{"property":"inquinante_sigla","value":"payload.pollutant_notation","valueType":"msg"},{"property":"inquinante_descrizione","value":"payload.pollutant_label","valueType":"msg"},{"property":"data_rilevazione","value":"payload.data_record_end_time","valueType":"msg"},{"property":"unita_misura","value":"payload.observation_unit_notation","valueType":"msg"},{"property":"livello_inquinante","value":"payload.pollutant_level","valueType":"msg"},{"property":"posizione_stazione","value":"payload.station_position","valueType":"msg"},{"property":"limite","value":"350  µg/m3 al giorno","valueType":"str"}],"inputOverride":"allow","outputProperties":[],"x":1130,"y":260,"wires":[[]]},{"id":"be1140aedd07108f","type":"ha-sensor","z":"9341e81a2672a77b","name":"C6H6 Orario","entityConfig":"ea9fa5358962befe","version":0,"state":"payload.data_record_value","stateType":"msg","attributes":[{"property":"luogo","value":"payload.municipality_name","valueType":"msg"},{"property":"indirizzo","value":"payload.station_municipality","valueType":"msg"},{"property":"codice_europeo","value":"payload.station_eu_code","valueType":"msg"},{"property":"inquinante_sigla","value":"payload.pollutant_notation","valueType":"msg"},{"property":"inquinante_descrizione","value":"payload.pollutant_label","valueType":"msg"},{"property":"data_rilevazione","value":"payload.data_record_end_time","valueType":"msg"},{"property":"unita_misura","value":"payload.observation_unit_notation","valueType":"msg"},{"property":"livello_inquinante","value":"payload.pollutant_level","valueType":"msg"},{"property":"posizione_stazione","value":"payload.station_position","valueType":"msg"},{"property":"limite","value":"5 µg/m3 all'anno","valueType":"str"}],"inputOverride":"allow","outputProperties":[],"x":1130,"y":320,"wires":[[]]},{"id":"122187a9ccb9da0e","type":"ha-sensor","z":"9341e81a2672a77b","name":"PM10 Orario","entityConfig":"2b73079bc1f934e1","version":0,"state":"payload.data_record_value","stateType":"msg","attributes":[{"property":"luogo","value":"payload.municipality_name","valueType":"msg"},{"property":"indirizzo","value":"payload.station_municipality","valueType":"msg"},{"property":"codice_europeo","value":"payload.station_eu_code","valueType":"msg"},{"property":"inquinante_sigla","value":"payload.pollutant_notation","valueType":"msg"},{"property":"inquinante_descrizione","value":"payload.pollutant_label","valueType":"msg"},{"property":"data_rilevazione","value":"payload.data_record_end_time","valueType":"msg"},{"property":"unita_misura","value":"payload.observation_unit_notation","valueType":"msg"},{"property":"livello_inquinante","value":"payload.pollutant_level","valueType":"msg"},{"property":"posizione_stazione","value":"payload.station_position","valueType":"msg"},{"property":"limite","value":"50 µg/m3 al giorno per non più di 35 volte in un anno","valueType":"str"}],"inputOverride":"allow","outputProperties":[],"x":1130,"y":380,"wires":[[]]},{"id":"f8c4f7e6629310cb","type":"ha-sensor","z":"9341e81a2672a77b","name":"PM25 Orario","entityConfig":"e913556f2e570def","version":0,"state":"payload.data_record_value","stateType":"msg","attributes":[{"property":"luogo","value":"payload.municipality_name","valueType":"msg"},{"property":"indirizzo","value":"payload.station_municipality","valueType":"msg"},{"property":"codice_europeo","value":"payload.station_eu_code","valueType":"msg"},{"property":"inquinante_sigla","value":"payload.pollutant_notation","valueType":"msg"},{"property":"inquinante_descrizione","value":"payload.pollutant_label","valueType":"msg"},{"property":"data_rilevazione","value":"payload.data_record_end_time","valueType":"msg"},{"property":"unita_misura","value":"payload.observation_unit_notation","valueType":"msg"},{"property":"livello_inquinante","value":"payload.pollutant_level","valueType":"msg"},{"property":"posizione_stazione","value":"payload.station_position","valueType":"msg"},{"property":"limite","value":"25 µg/m3 al giorno","valueType":"str"}],"inputOverride":"allow","outputProperties":[],"x":1130,"y":440,"wires":[[]]},{"id":"9cace0e7d80f0fec","type":"ha-sensor","z":"9341e81a2672a77b","name":"O3 Orario","entityConfig":"8b9bc702715f3b15","version":0,"state":"payload.data_record_value","stateType":"msg","attributes":[{"property":"luogo","value":"payload.municipality_name","valueType":"msg"},{"property":"indirizzo","value":"payload.station_municipality","valueType":"msg"},{"property":"codice_europeo","value":"payload.station_eu_code","valueType":"msg"},{"property":"inquinante_sigla","value":"payload.pollutant_notation","valueType":"msg"},{"property":"inquinante_descrizione","value":"payload.pollutant_label","valueType":"msg"},{"property":"data_rilevazione","value":"payload.data_record_end_time","valueType":"msg"},{"property":"unita_misura","value":"payload.observation_unit_notation","valueType":"msg"},{"property":"livello_inquinante","value":"payload.pollutant_level","valueType":"msg"},{"property":"posizione_stazione","value":"payload.station_position","valueType":"msg"},{"property":"limite","value":"180 µg/m3 per ora","valueType":"str"}],"inputOverride":"allow","outputProperties":[],"x":1120,"y":500,"wires":[[]]},{"id":"b3e7f7b6d745543b","type":"ha-sensor","z":"9341e81a2672a77b","name":"NO2 Orario","entityConfig":"136a6476a7590443","version":0,"state":"payload.data_record_value","stateType":"msg","attributes":[{"property":"luogo","value":"payload.municipality_name","valueType":"msg"},{"property":"indirizzo","value":"payload.station_municipality","valueType":"msg"},{"property":"codice_europeo","value":"payload.station_eu_code","valueType":"msg"},{"property":"inquinante_sigla","value":"payload.pollutant_notation","valueType":"msg"},{"property":"inquinante_descrizione","value":"payload.pollutant_label","valueType":"msg"},{"property":"data_rilevazione","value":"payload.data_record_end_time","valueType":"msg"},{"property":"unita_misura","value":"payload.observation_unit_notation","valueType":"msg"},{"property":"livello_inquinante","value":"payload.pollutant_level","valueType":"msg"},{"property":"posizione_stazione","value":"payload.station_position","valueType":"msg"},{"property":"limite","value":"200 µg/m3 al giorno per non più di 18 volte in un anno","valueType":"str"}],"inputOverride":"allow","outputProperties":[],"x":1130,"y":560,"wires":[[]]},{"id":"d17996519aae5d44","type":"ha-button","z":"9341e81a2672a77b","name":"","version":0,"debugenabled":false,"outputs":1,"entityConfig":"09fe098a6e9c3183","outputProperties":[{"property":"payload","propertyType":"msg","value":"","valueType":"entityState"},{"property":"topic","propertyType":"msg","value":"","valueType":"triggerId"},{"property":"data","propertyType":"msg","value":"","valueType":"entity"}],"x":150,"y":40,"wires":[["ab8c3c44fbcf8ab6"]]},{"id":"45f7384ded2e44b5","type":"inject","z":"9341e81a2672a77b","name":"","props":[{"p":"payload"},{"p":"topic","vt":"str"}],"repeat":"3600","crontab":"","once":true,"onceDelay":0.1,"topic":"","payload":"","payloadType":"date","x":190,"y":120,"wires":[["ab8c3c44fbcf8ab6"]]},{"id":"ab8c3c44fbcf8ab6","type":"link out","z":"9341e81a2672a77b","name":"link out 123","mode":"link","links":["93bab1ec2d64d3a7"],"x":345,"y":120,"wires":[]},{"id":"93bab1ec2d64d3a7","type":"link in","z":"9341e81a2672a77b","name":"link in 65","links":["ab8c3c44fbcf8ab6"],"x":315,"y":380,"wires":[["86a27412fd248875","3d80e107b51013e6","d4c2feeff75e09fc","aa59fbdcd1545be8","d2e0462a8bfc7fc4","d91e018119691670","bc4ecc4da286b3c8"]]},{"id":"260a26186db8e11c","type":"switch","z":"9341e81a2672a77b","name":"","property":"payload.station_eu_code","propertyType":"msg","rules":[{"t":"eq","v":"IT1658A","vt":"str"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":810,"y":320,"wires":[["136098c27cd667eb"],[]]},{"id":"c409f470e25feae8","type":"comment","z":"9341e81a2672a77b","name":"Carbon monoxide (air)","info":"","x":1320,"y":200,"wires":[]},{"id":"2fc04ecdb49a76e2","type":"comment","z":"9341e81a2672a77b","name":" Sulphur dioxide (air)","info":"","x":1310,"y":260,"wires":[]},{"id":"21a4b5e2da677ee2","type":"comment","z":"9341e81a2672a77b","name":"Benzene (air)","info":"","x":1290,"y":320,"wires":[]},{"id":"26eb8d5360629947","type":"comment","z":"9341e81a2672a77b","name":"PM10","info":"","x":1270,"y":380,"wires":[]},{"id":"347f978804fde924","type":"comment","z":"9341e81a2672a77b","name":"PM 2.5","info":"","x":1270,"y":440,"wires":[]},{"id":"3e96d213d91d31d6","type":"comment","z":"9341e81a2672a77b","name":"Ozone (air)","info":"","x":1280,"y":500,"wires":[]},{"id":"a1d1d746f606c99d","type":"comment","z":"9341e81a2672a77b","name":"Nitrogen dioxide (air)","info":"","x":1310,"y":560,"wires":[]},{"id":"bf84667c52653692","type":"switch","z":"9341e81a2672a77b","name":"","property":"payload.data_record_end_time","propertyType":"msg","rules":[{"t":"gt","v":"","vt":"prev"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":950,"y":200,"wires":[["70c367d7c81694b0"],[]]},{"id":"494566f4d1175bf5","type":"switch","z":"9341e81a2672a77b","name":"","property":"payload.data_record_end_time","propertyType":"msg","rules":[{"t":"gt","v":"","vt":"prev"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":950,"y":260,"wires":[["f359e094c2916855"],[]]},{"id":"136098c27cd667eb","type":"switch","z":"9341e81a2672a77b","name":"","property":"payload.data_record_end_time","propertyType":"msg","rules":[{"t":"gt","v":"","vt":"prev"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":950,"y":320,"wires":[["be1140aedd07108f"],[]]},{"id":"a7f2dabdfa56f504","type":"switch","z":"9341e81a2672a77b","name":"","property":"payload.data_record_end_time","propertyType":"msg","rules":[{"t":"gt","v":"","vt":"prev"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":950,"y":380,"wires":[["122187a9ccb9da0e"],[]]},{"id":"b8d2af647cf08a5a","type":"switch","z":"9341e81a2672a77b","name":"","property":"payload.data_record_end_time","propertyType":"msg","rules":[{"t":"gt","v":"","vt":"prev"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":950,"y":440,"wires":[["f8c4f7e6629310cb"],[]]},{"id":"cd5c61642abc1632","type":"switch","z":"9341e81a2672a77b","name":"","property":"payload.data_record_end_time","propertyType":"msg","rules":[{"t":"gt","v":"","vt":"prev"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":950,"y":500,"wires":[["9cace0e7d80f0fec"],[]]},{"id":"7db8532370fd384d","type":"switch","z":"9341e81a2672a77b","name":"","property":"payload.data_record_end_time","propertyType":"msg","rules":[{"t":"gt","v":"","vt":"prev"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":950,"y":560,"wires":[["b3e7f7b6d745543b"],[]]},{"id":"018d9c5d8af3c28a","type":"ha-entity-config","server":"5d1c0eb6.fa674","deviceConfig":"502c0a918e764ed3","name":"CO Orario","version":6,"entityType":"sensor","haConfig":[{"property":"name","value":"CO Orario"},{"property":"icon","value":""},{"property":"entity_picture","value":""},{"property":"entity_category","value":""},{"property":"device_class","value":""},{"property":"unit_of_measurement","value":"mg/m³"},{"property":"state_class","value":""}],"resend":false,"debugEnabled":false},{"id":"d164653373b81866","type":"ha-entity-config","server":"5d1c0eb6.fa674","deviceConfig":"502c0a918e764ed3","name":"SO2 Orario","version":6,"entityType":"sensor","haConfig":[{"property":"name","value":"SO2 Orario"},{"property":"icon","value":""},{"property":"entity_picture","value":""},{"property":"entity_category","value":""},{"property":"device_class","value":"sulphur_dioxide"},{"property":"unit_of_measurement","value":"µg/m³"},{"property":"state_class","value":"measurement"}],"resend":false,"debugEnabled":false},{"id":"ea9fa5358962befe","type":"ha-entity-config","server":"5d1c0eb6.fa674","deviceConfig":"502c0a918e764ed3","name":"C6H6 Orario","version":6,"entityType":"sensor","haConfig":[{"property":"name","value":"C6H6 Orario"},{"property":"icon","value":""},{"property":"entity_picture","value":""},{"property":"entity_category","value":""},{"property":"device_class","value":"pm10"},{"property":"unit_of_measurement","value":"µg/m³"},{"property":"state_class","value":"measurement"}],"resend":false,"debugEnabled":false},{"id":"2b73079bc1f934e1","type":"ha-entity-config","server":"5d1c0eb6.fa674","deviceConfig":"502c0a918e764ed3","name":"PM10 Orario","version":6,"entityType":"sensor","haConfig":[{"property":"name","value":"PM10 Orario"},{"property":"icon","value":""},{"property":"entity_picture","value":""},{"property":"entity_category","value":""},{"property":"device_class","value":"pm10"},{"property":"unit_of_measurement","value":"µg/m³"},{"property":"state_class","value":"measurement"}],"resend":false,"debugEnabled":false},{"id":"e913556f2e570def","type":"ha-entity-config","server":"5d1c0eb6.fa674","deviceConfig":"502c0a918e764ed3","name":"PM25 Orario","version":6,"entityType":"sensor","haConfig":[{"property":"name","value":"PM25 Orario"},{"property":"icon","value":""},{"property":"entity_picture","value":""},{"property":"entity_category","value":""},{"property":"device_class","value":"pm25"},{"property":"unit_of_measurement","value":"µg/m³"},{"property":"state_class","value":"measurement"}],"resend":false,"debugEnabled":false},{"id":"8b9bc702715f3b15","type":"ha-entity-config","server":"5d1c0eb6.fa674","deviceConfig":"502c0a918e764ed3","name":"O3 Orario","version":6,"entityType":"sensor","haConfig":[{"property":"name","value":"O3 Orario"},{"property":"icon","value":""},{"property":"entity_picture","value":""},{"property":"entity_category","value":""},{"property":"device_class","value":"ozone"},{"property":"unit_of_measurement","value":"µg/m³"},{"property":"state_class","value":"measurement"}],"resend":false,"debugEnabled":false},{"id":"136a6476a7590443","type":"ha-entity-config","server":"5d1c0eb6.fa674","deviceConfig":"502c0a918e764ed3","name":"NO2 Orario","version":6,"entityType":"sensor","haConfig":[{"property":"name","value":"NO2 Orario"},{"property":"icon","value":""},{"property":"entity_picture","value":""},{"property":"entity_category","value":""},{"property":"device_class","value":"sulphur_dioxide"},{"property":"unit_of_measurement","value":"µg/m³"},{"property":"state_class","value":"measurement"}],"resend":false,"debugEnabled":false},{"id":"09fe098a6e9c3183","type":"ha-entity-config","server":"5d1c0eb6.fa674","deviceConfig":"502c0a918e764ed3","name":"Aggiorna_dati_ISPRA","version":6,"entityType":"button","haConfig":[{"property":"name","value":"Aggiorna dati ISPRA"},{"property":"icon","value":""},{"property":"entity_picture","value":""},{"property":"entity_category","value":""},{"property":"device_class","value":""}],"resend":false,"debugEnabled":false},{"id":"5d1c0eb6.fa674","type":"server","name":"Home Assistant","addon":true,"rejectUnauthorizedCerts":true,"ha_boolean":"","connectionDelay":false,"cacheJson":true,"heartbeat":false,"heartbeatInterval":"","areaSelector":"id","deviceSelector":"id","entitySelector":"id","statusSeparator":"","enableGlobalContextStore":true},{"id":"502c0a918e764ed3","type":"ha-device-config","name":"Node-RED","hwVersion":"","manufacturer":"Node-RED","model":"","swVersion":""}]
 ```
 
+Il codice sopra indicato prevede anche la creazione di un pulsante in Home Assistant così da poter richiarmare l'aggiornamento manualmente quando si vuole. Non è necessario e può essere eliminato perchè l'aggiornamento avviene ciclicamente ogni ora.
+
+Dobbiamo però personalizzare il codice. 
+L'unica cosa da eseguire è l'inserimento delle stringhe per il download dei dati. Come si è avuto modo di notare il download è singolo per ogni inquinante, pertanto, individuata la stringa come indicato sopra bisognerà aprire il nodo `http request` e nel campo `URL` inserire la stringa di download per ogni singolo inquinante relativamente ad ogni singola centralina che si vuole conoscere. 
+
+Terminata questa configuazione in Node-RED, vediamo cosa succede in Home Assistant:
+
+Se abbiamo rispettiato tutti i prerequisiti, nei `Device` troveremo `Node-Red Companion`. Al suo interno risulterà configurato uno o più dispositivi, tra i quali, se avete seguito la mia configurazione quello denominato `Node-RED`. All'interno di esso saranno presenti e configurati tutti i sensori ed il pulsante creato. In particolare, cliccando sui sensori e visualizzando gli attributi, vedremo la seguente configurazione (dopo il primo aggiornamento):
+
+![HA1](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Sensore_HA.jpg)
 
 
+I sensori sono stati creati e possiamo dunque configurare la scheda Lovelace per la sua visualizzazione. Io ho scelto quella indicata nei prerequisiti anche perchè consente, cliccando sulle intestazioni, di visualizzare i dati secondo l'ordine preferito.
 
+- Nella _Dashbord_ della _lovelace_, dove preferite, aprite una nuova scheda ed incollate il codice del file `HA lovelace.txt` ed il risultato sarà questo:
 
-
-
-
-
-
-
-
-   
-   
-1. Copiare il contenuto di `sensori HA.txt` in  `configuration.yaml`. Se la voce `mqtt:` è già presente, accodate i sensori a quelli già presenti;
-1. Potete aggiungere altri sensori rekativi agli inquinanti se la centraline da voi scelte ne espongono di diversi, la configurazione è identica per tutti, basta cambiare il nome;
-1. La seguente configurazione esporrà i sensori in HA come vedete di seguito:
-
-![lovelace](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Esposizione%20HA.jpg)
-
-
-
-codice:
-```yaml
-
-# configuration.yaml
-
-#*******************************************************
-#                                                      *
-#                    Sensori qualità ambiente          *
-#                                                      *
-#*******************************************************
-
-mqtt:
-  sensor:
-    - name: "NO2"
-      state_topic: "sensors/no2"
-      unit_of_measurement: "µg/m³"
-      value_template: "{{ value_json.valore }}"
-      json_attributes_topic: "sensors/no2"
-      json_attributes_template: >
-        {
-          "data": "{{ value_json.data }}",
-          "inquinante": "{{ value_json.inquinante }}",
-          "limite": {{ value_json.limite }},
-          "unita": "{{ value_json.unita }}",
-          "indice_qualita": "{{ value_json.indice_qualita }}",
-          "classe_qualita": "{{ value_json.classe_qualita }}",
-          "superamenti": {{ value_json.superamenti }}
-        }
-
-    - name: "PM10"
-      state_topic: "sensors/pm10"
-      unit_of_measurement: "µg/m³"
-      value_template: "{{ value_json.valore }}"
-      json_attributes_topic: "sensors/pm10"
-      json_attributes_template: >
-        {
-          "data": "{{ value_json.data }}",
-          "inquinante": "{{ value_json.inquinante }}",
-          "limite": {{ value_json.limite }},
-          "unita": "{{ value_json.unita }}",
-          "indice_qualita": "{{ value_json.indice_qualita }}",
-          "classe_qualita": "{{ value_json.classe_qualita }}",
-          "superamenti": {{ value_json.superamenti }}
-        } 
-
-    - name: "PM25"
-      state_topic: "sensors/pm25"
-      unit_of_measurement: "µg/m³"
-      value_template: "{{ value_json.valore }}"
-      json_attributes_topic: "sensors/pm25"
-      json_attributes_template: >
-        {
-          "data": "{{ value_json.data }}",
-          "inquinante": "{{ value_json.inquinante }}",
-          "limite": {{ value_json.limite }},
-          "unita": "{{ value_json.unita }}",
-          "indice_qualita": "{{ value_json.indice_qualita }}",
-          "classe_qualita": "{{ value_json.classe_qualita }}",
-          "superamenti": {{ value_json.superamenti }}
-        }         
-        
-    - name: "SO2"
-      state_topic: "sensors/so2"
-      unit_of_measurement: "µg/m³"
-      value_template: "{{ value_json.valore }}"
-      json_attributes_topic: "sensors/so2"
-      json_attributes_template: >
-        {
-          "data": "{{ value_json.data }}",
-          "inquinante": "{{ value_json.inquinante }}",
-          "limite": {{ value_json.limite }},
-          "unita": "{{ value_json.unita }}",
-          "indice_qualita": "{{ value_json.indice_qualita }}",
-          "classe_qualita": "{{ value_json.classe_qualita }}",
-          "superamenti": {{ value_json.superamenti }}
-        }         
-        
-    - name: "C6H6"
-      state_topic: "sensors/c6h6"
-      unit_of_measurement: "µg/m³"
-      value_template: "{{ value_json.valore }}"
-      json_attributes_topic: "sensors/c6h6"
-      json_attributes_template: >
-        {
-          "data": "{{ value_json.data }}",
-          "inquinante": "{{ value_json.inquinante }}",
-          "limite": {{ value_json.limite }},
-          "unita": "{{ value_json.unita }}",
-          "indice_qualita": "{{ value_json.indice_qualita }}",
-          "classe_qualita": "{{ value_json.classe_qualita }}",
-          "superamenti": {{ value_json.superamenti }}
-        }         
-        
-    - name: "CO"
-      state_topic: "sensors/co"
-      unit_of_measurement: "µg/m³"
-      value_template: "{{ value_json.valore }}"
-      json_attributes_topic: "sensors/co"
-      json_attributes_template: >
-        {
-          "data": "{{ value_json.data }}",
-          "inquinante": "{{ value_json.inquinante }}",
-          "limite": {{ value_json.limite }},
-          "unita": "{{ value_json.unita }}",
-          "indice_qualita": "{{ value_json.indice_qualita }}",
-          "classe_qualita": "{{ value_json.classe_qualita }}",
-          "superamenti": {{ value_json.superamenti }}
-        } 
-        
-    - name: "IPA"
-      state_topic: "sensors/ipa"
-      unit_of_measurement: "µg/m³"
-      value_template: "{{ value_json.valore }}"
-      json_attributes_topic: "sensors/ipa"
-      json_attributes_template: >
-        {
-          "data": "{{ value_json.data }}",
-          "inquinante": "{{ value_json.inquinante }}",
-          "limite": {{ value_json.limite }},
-          "unita": "{{ value_json.unita }}",
-          "indice_qualita": "{{ value_json.indice_qualita }}",
-          "classe_qualita": "{{ value_json.classe_qualita }}",
-          "superamenti": {{ value_json.superamenti }}
-        } 
-```
-
-1. Nella _Dashbord_ della _lovelace_, dove preferite, aprite una nuova scheda ed incollate il codice del file `HA lovelace.txt` ed il risultato sarà questo:
-
-![lovelace](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Lovelace%20Visualizzazione%20HA.jpg)
+![lovelace](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/HA_lovelace.jpg)
 
 codice:
 ```yaml
 type: custom:flex-table-card
-title: Valori Ambientali San Pietro Vernotico
+title: Dati in quasi tempo reale
 entities:
   include:
-    - sensor.pm10
-    - sensor.pm25
-    - sensor.no2
-    - sensor.so2
-    - sensor.co
-    - sensor.c6h6
-    - sensor.ipa
+    - sensor.pm10_orario_2
+    - sensor.pm25_orario_2
+    - sensor.no2_orario_2
+    - sensor.co_orario_2
+    - sensor.c6h6_orario_2
   sort_by: name
 columns:
-  - name: Inquinante
-    data: inquinante
-  - name: Valore
+  - name: Inquin.
+    data: inquinante_sigla
+  - name: Val.
     data: state
-  - name: Unita
-    data: unita
-  - name: Limite
-    data: limite
-  - name: Superamenti
-    data: superamenti
-  - name: Indice qualità
-    data: indice_qualita
-  - name: Classe qualità
-    data: classe_qualita
+  - name: Unità misura
+    data: unita_misura
+  - name: Livello Inq.
+    data: livello_inquinante
+  - name: Ultima rilevazione
+    data: data_rilevazione
+grid_options:
+  columns: 15
+  rows: 6
 ```
 
 ### 4 - Configurazione di Node-RED
