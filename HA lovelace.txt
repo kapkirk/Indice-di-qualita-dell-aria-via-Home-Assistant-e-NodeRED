@@ -1,0 +1,24 @@
+type: custom:flex-table-card
+title: Dati in quasi tempo reale
+entities:
+  include:
+    - sensor.pm10_orario_2
+    - sensor.pm25_orario_2
+    - sensor.no2_orario_2
+    - sensor.co_orario_2
+    - sensor.c6h6_orario_2
+  sort_by: name
+columns:
+  - name: Inquin.
+    data: inquinante_sigla
+  - name: Val.
+    data: state
+  - name: Unità misura
+    data: unita_misura
+  - name: Livello Inq.
+    data: livello_inquinante
+  - name: Ultima rilevazione
+    data: data_rilevazione
+grid_options:
+  columns: 15
+  rows: 6
