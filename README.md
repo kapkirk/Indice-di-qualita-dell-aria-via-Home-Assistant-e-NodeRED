@@ -15,13 +15,15 @@ I dati disponibili nella dashboard dell'Istituto è possiible conoscere quelli r
 
 <br>
 
-## Tavola dei Contenuti
+## Indice
+
+Il seguente progetto è così articolato:
 
 1. **Descrizione del progetto**
 
-2. **Caratteristiche principali](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#caratteristiche-principali)**
+2. **Caratteristiche principali**
 
-3. **Descrizione del funzionamento](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant#descrizione-del-funzionamento)**
+3. **Descrizione del funzionamento**
 
 4. **Installazione**
    1. **Prerequisiti**
@@ -29,11 +31,9 @@ I dati disponibili nella dashboard dell'Istituto è possiible conoscere quelli r
    1. **Configurazione di Node-RED**
    1. **Gestione della Lovelace**
    1. **Configurazione Sensore di Qualità dell'Aria**
-
-
-
  
 <br>
+
 
 ## Descrizione del progetto
 
