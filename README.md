@@ -426,4 +426,4 @@ La seconda parte che vedete nella foto è quella dedicata ai dati ambientali pro
 - [Implementazione in Home Assistant tramite Node-RED ed MQTT](https://github.com/kapkirk/Dati-ambientali-ARPA-Puglia-via-Home-Assistant)
   
 
-Laovoro finito!
+Lavoro finito!
