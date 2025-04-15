@@ -241,7 +241,7 @@ TRENTO|Ozone (air)|PA_TRENTO - Ozone (air)
 TRENTO|Nitrogen dioxide (air)|PA_TRENTO - Nitrogen dioxide (air)
 
 
-1. La procedura da seuigre per individuare il dato è la seguente:
+1. La procedura da seguire per individuare il dato è la seguente:
 - Accedere alla pagine del [download](https://sinacloud.isprambiente.it/portal/apps/experiencebuilder/experience/?data_id=dataSource_137-infoariadowload_7094-infoariadowload%3A127&draft=true&id=df677d20871d4383b34ce355e24f0598&page=page_74)
 - Selezionare la Regione della quale si vuole acquisire il dato inquinante ed individuare il rigo dell'inquinante. Il terzo campo della tabella conterrà il link per il download che bisognerà copiare per inserirlo nel flusso di Node-RED.
   
@@ -249,8 +249,10 @@ TRENTO|Nitrogen dioxide (air)|PA_TRENTO - Nitrogen dioxide (air)
 
     `https://sdi.isprambiente.it/geoserver/infoaria/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=infoaria%3Adati_nrt_informambiente_mv&CQL_FILTER=region_name=%27ABRUZZO%27+AND+pollutant_id=%271%27&maxFeatures=10000&outputFormat=csv `
 
-   può essere utilizzare anche nel normale browser. La sua consultazione genererà il download di un file che potrete leggere ed apprezzare soprattutto perchè per la centralina che avrete individuato, vi consentirà di sapere quali sono i dati pubblicati da ISPRA.
+   può essere utilizzato anche nel normale browser. La sua consultazione genererà il download di un file che potrete leggere ed apprezzare soprattutto perchè per la centralina che avrete individuato, vi consentirà di sapere quali sono i dati pubblicati da ISPRA.
 
+  Ma quale e` la centralina che c interessa? Le soluzioni sono due:
+  1. individuarla tramite la mappa di download. Ci colleghismo al sito ISPRA, selezioniamol`inquinante che ci interessa e compariranno tutte le centraline che esoongono il dato.Cliccsndoci sopravedremo il code europeo, proprio quello checi serve
     
 ### 3 - Configurazione in Node-RED
 
