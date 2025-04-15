@@ -315,7 +315,7 @@ L`unica cosa che cambiera' nella configurazione dei sensori sara' il limite che 
 - O3: 180 µg/m3 per ora
 - NO2: 180 µg/m3 per ora
 
-- a questo punto possiamo acquisire il codice in Node-RED, lo trovate nel file `flusso Node-Red.json`, oppure da copiare ed incollare:
+A questo punto possiamo acquisire il codice in Node-RED, lo trovate nel file `flusso Node-Red.json`, oppure da copiare ed incollare:
 
 ![Node-red1](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Flusso_Node-Red.jpg)
 
