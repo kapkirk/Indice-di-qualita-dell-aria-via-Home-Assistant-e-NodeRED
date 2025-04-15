@@ -307,13 +307,13 @@ limite | 10 mg/m3 ogni 8 ore
 ![sensore1](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Sensore_nodo.jpg)
 
 L`unica cosa che cambiera' nella configurazione dei sensori sara' il limite che dovrete impostare come segue:
-CO: 10 mg/m3 ogni 8 ore
-SO2: 350 µg/m3 al giorno
-C6H6: 5 µg/m3 all'anno
-PM10: 50 µg/m3 al giorno per non più di 35 volte in un anno
-PM2.5: 25 µg/m3 al giorno
-O3: 180 µg/m3 per ora
-NO2: 180 µg/m3 per ora
+- CO: 10 mg/m3 ogni 8 ore
+- SO2: 350 µg/m3 al giorno
+- C6H6: 5 µg/m3 all'anno
+- PM10: 50 µg/m3 al giorno per non più di 35 volte in un anno
+- PM2.5: 25 µg/m3 al giorno
+- O3: 180 µg/m3 per ora
+- NO2: 180 µg/m3 per ora
 
 - a questo punto possiamo acquisire il codice in Node-RED, lo trovate nel file `flusso Node-Red.json`, oppure da copiare ed incollare:
 
