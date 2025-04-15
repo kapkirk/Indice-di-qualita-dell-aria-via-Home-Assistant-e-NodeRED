@@ -39,7 +39,7 @@ Il seguente progetto è così articolato:
 
 Scopo principale di questo progetto  è quello di automatizzare l`acquisizione "in quasi tempo reale" di un indice di qualità dell'aria acquisendo i dati ambientali pubblicati tramite API dall'ISPRA che li acquisisce della diverse Agenzie Regionali di Protezione e Prevenzione Ambientale sparse su tutto il territorio nazionale, la loro elaborazione tramite Node-RED e la successiva integrazione in Home Assistant per la successiva visualizzazione.
 
-Tutte le info sono disponibili sul sito dell'Istituto traime il [S.I.N.A.](https://sinacloud.isprambiente.it/portal/apps/experiencebuilder/experience/?draft=true&id=df677d20871d4383b34ce355e24f0598&page=page_38) (**Sistema Unformativo Nazionale Ambientale**) secondo la [mappa](https://dati.arpa.puglia.it/qaria?footer=false%EF%BB%BF) dove i dati sono disponbili per il [download](https://sinacloud.isprambiente.it/portal/apps/experiencebuilder/experience/?draft=true&id=df677d20871d4383b34ce355e24f0598&page=page_74). 
+Tutte le info sono disponibili sul sito dell'Istituto traime il [S.I.N.A.](https://sinacloud.isprambiente.it/portal/apps/experiencebuilder/experience/?draft=true&id=df677d20871d4383b34ce355e24f0598&page=page_38) (**Sistema Unformativo Nazionale Ambientale**) secondo la [mappa](https://sinacloud.isprambiente.it/portal/apps/experiencebuilder/experience/?draft=true&id=df677d20871d4383b34ce355e24f0598&page=page_62) dove i dati sono disponbili per il [download](https://sinacloud.isprambiente.it/portal/apps/experiencebuilder/experience/?draft=true&id=df677d20871d4383b34ce355e24f0598&page=page_74). 
 
 ---
 
@@ -252,7 +252,17 @@ TRENTO|Nitrogen dioxide (air)|PA_TRENTO - Nitrogen dioxide (air)
    può essere utilizzato anche nel normale browser. La sua consultazione genererà il download di un file che potrete leggere ed apprezzare soprattutto perchè per la centralina che avrete individuato, vi consentirà di sapere quali sono i dati pubblicati da ISPRA.
 
   Ma quale e` la centralina che c interessa? Le soluzioni sono due:
-  1. individuarla tramite la mappa di download. Ci colleghismo al sito ISPRA, selezioniamol`inquinante che ci interessa e compariranno tutte le centraline che esoongono il dato.Cliccsndoci sopravedremo il code europeo, proprio quello checi serve
+  1. individuarla tramite la [mappa](https://sinacloud.isprambiente.it/portal/apps/experiencebuilder/experience/?draft=true&id=df677d20871d4383b34ce355e24f0598&page=page_62):
+     - ci colleghiamo al sito ISPRA
+     - selezioniamo l`inquinante che ci interessa
+     - clicchiamo su dati orari e vedremo comparire tutte le centraline che esopngono il dato
+     - cliccandoci sopra vedremo come primo dato il codice europeo, proprio quello che ci serve (es: IT1659A), prendetene nota!
+  2. Individuarla tramite il file csv:
+     - scaricate il file csv come spiegato al precedente punto 1
+     - aprite Excel
+     - nella scheda del menu `dati` selezionate `txt\csv`
+     - selezionate il file, cliccate sempre continua ed importate i dati
+     - cercate la centralina che vi interessa tramite l`indirizzo o le coordinate ed
     
 ### 3 - Configurazione in Node-RED
 
