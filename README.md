@@ -252,17 +252,19 @@ TRENTO|Nitrogen dioxide (air)|PA_TRENTO - Nitrogen dioxide (air)
    può essere utilizzato anche nel normale browser. La sua consultazione genererà il download di un file che potrete leggere ed apprezzare soprattutto perchè per la centralina che avrete individuato, vi consentirà di sapere quali sono i dati pubblicati da ISPRA.
 
   Ma quale e` la centralina che c interessa? Le soluzioni sono due:
-  1. individuarla tramite la [mappa](https://sinacloud.isprambiente.it/portal/apps/experiencebuilder/experience/?draft=true&id=df677d20871d4383b34ce355e24f0598&page=page_62):
+1. individuarla tramite la [mappa](https://sinacloud.isprambiente.it/portal/apps/experiencebuilder/experience/?draft=true&id=df677d20871d4383b34ce355e24f0598&page=page_62):
      - ci colleghiamo al sito ISPRA
      - selezioniamo l`inquinante che ci interessa
      - clicchiamo su dati orari e vedremo comparire tutte le centraline che esopngono il dato
      - cliccandoci sopra vedremo come primo dato il codice europeo, proprio quello che ci serve (es: IT1659A), prendetene nota!
-  2. Individuarla tramite il file csv:
+2. Individuarla tramite il file csv:
      - scaricate il file csv come spiegato al precedente punto 1
      - aprite Excel
      - nella scheda del menu `dati` selezionate `txt\csv`
      - selezionate il file, cliccate sempre continua ed importate i dati
-     - cercate la centralina che vi interessa tramite l`indirizzo o le coordinate ed
+     - cercate la centralina che vi interessa tramite l`indirizzo o le coordinate
+     - individuate il dato riportato nella colonna campo `station_eu_code`  (es: IT1659A), prendetene nota!
+       
     
 ### 3 - Configurazione in Node-RED
 
@@ -304,6 +306,14 @@ limite | 10 mg/m3 ogni 8 ore
 
 ![sensore1](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Sensore_nodo.jpg)
 
+L`unica cosa che cambiera' nella configurazione dei sensori sara' il limite che dovrete impostare come segue:
+CO: 10 mg/m3 ogni 8 ore
+SO2: 350 µg/m3 al giorno
+C6H6: 5 µg/m3 all'anno
+PM10: 50 µg/m3 al giorno per non più di 35 volte in un anno
+PM2.5: 25 µg/m3 al giorno
+O3: 180 µg/m3 per ora
+NO2: 180 µg/m3 per ora
 
 - a questo punto possiamo acquisire il codice in Node-RED, lo trovate nel file `flusso Node-Red.json`, oppure da copiare ed incollare:
 
@@ -318,12 +328,16 @@ codice:
 
 Il codice sopra indicato prevede anche la creazione di un pulsante in Home Assistant così da poter richiarmare l'aggiornamento manualmente quando si vuole. Non è necessario e può essere eliminato perchè l'aggiornamento avviene ciclicamente ogni ora.
 
-Dobbiamo però personalizzare il codice. 
-L'unica cosa da eseguire è l'inserimento delle stringhe per il download dei dati. Come si è avuto modo di notare il download è singolo per ogni inquinante, pertanto, individuata la stringa come indicato sopra bisognerà aprire il nodo `http request` e nel campo `URL` inserire la stringa di download per ogni singolo inquinante relativamente ad ogni singola centralina che si vuole conoscere. 
+Dobbiamo però personalizzare il codice:
+1. inserire le stringhe per il download dei dati. Come si è avuto modo di notare il download è singolo per ogni inquinante, pertanto, individuata la stringa come indicato sopra bisognerà aprire il nodo `http request` e nel campo `URL` inserire la stringa di download per ogni singolo inquinante relativamente ad ogni singola centralina che si vuole conoscere.
+2. Inserire il codice della Stazione nel primo dei due campi `switch`.
+3. Non toccate altro.
+4. Eseguite un `Deploy`
+5. Cliccate nul nodo `inject`. Se tutto e' andato a buon fine vedrete comparire sotto il nodo `http request` un indicatore blu con la scritta `requesting`, mentre, sotto il sensore vedrete comparire un indicatore verde con un numero che indichera' proprio il valore dell`inquinante.
 
 Terminata questa configuazione in Node-RED, vediamo cosa succede in Home Assistant:
 
-Se abbiamo rispettiato tutti i prerequisiti, nei `Device` troveremo `Node-Red Companion`. Al suo interno risulterà configurato uno o più dispositivi, tra i quali, se avete seguito la mia configurazione quello denominato `Node-RED`. All'interno di esso saranno presenti e configurati tutti i sensori ed il pulsante creato. In particolare, cliccando sui sensori e visualizzando gli attributi, vedremo la seguente configurazione (dopo il primo aggiornamento):
+Se abbiamo rispettato tutti i prerequisiti, nei `Device` troveremo `Node-Red Companion`. Al suo interno risulterà configurato uno o più dispositivi, tra i quali, se avete seguito la mia configurazione, quello denominato `Node-RED`. All'interno di esso saranno presenti e configurati tutti i sensori ed il pulsante creato. In particolare, cliccando sui sensori e visualizzando gli attributi, vedremo la seguente configurazione (dopo il primo aggiornamento):
 
 ![HA1](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Sensore_HA.jpg)
 
