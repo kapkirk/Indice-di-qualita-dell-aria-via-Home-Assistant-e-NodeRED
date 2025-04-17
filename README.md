@@ -1,4 +1,4 @@
-# Indice di qualità dell'aria Via Home Assistant
+# Indice di qualità dell'aria Via Home Assistant e Node-RED
 
 
 ![](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/HA%20logo2.png)  `                           ` ![](https://github.com/kapkirk/Indice-di-qualita-dell-aria-via-Home-Assistant/blob/main/images/Node-RED%20logo.jpg)         
